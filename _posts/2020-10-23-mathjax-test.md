@@ -1,16 +1,14 @@
 ---
 layout: post
-title: KaTeX test
+title: mathjax test
 date: 2020-10-23 14:46 +0100
 ---
 
-{% include katex.html %}
+{% include mathjax.html %}
 
-{% katexmm %}
+Gaussian integral: $$\displaystyle \int_{-\infty}^{\infty}e^{-x^2}dx=\sqrt{\pi}$$
 
-Gaussian integral: $$\int_{-\infty}^{\infty}e^{-x^2}dx=\sqrt{\pi}$$
-
-j invariant: $$j(q)=\frac{1}{q}+744+196884q+\cdots$$
+j invariant: $$\displaystyle j(q)=\frac{1}{q}+744+196884q+\cdots$$
 
 Binomial expansion:
 
@@ -41,5 +39,3 @@ $$
 30 \\ 20 \\ 11 \\ 4
 \end{matrix}\right]
 $$
-
-{% endkatexmm %}

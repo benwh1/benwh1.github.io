@@ -38,6 +38,3 @@ gem "kramdown-parser-gfm"
 
 # jekyll-compose plugin
 gem 'jekyll-compose', group: [:jekyll_plugins]
-
-# jekyll-katex plugin
-gem 'jekyll-katex', group: [:jekyll_plugins]
