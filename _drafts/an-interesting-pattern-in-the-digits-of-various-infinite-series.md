@@ -137,24 +137,12 @@ $$\begin{aligned}
 &= \frac{1}{a}\left(H\left(\frac{b}{a}+n\right)-H\left(\frac{b}{a}\right)\right)
 \end{aligned}$$
 
-Let's also rewrite $$\pi_N$$ in terms of $$H$$ (we'll just consider the case where $$N$$ is even)
+Exercise for the reader: use this formula or perform a similar calculation to verify the following equations (when $$N$$ is even).
 
-$$\begin{aligned}
-\pi_N &= \sum_{n=1}^{N}(-1)^{n+1}\frac{4}{2n-1} \\
-&= \sum_{n=1}^{N/2}\left(\frac{4}{4n-3}-\frac{4}{4n-1}\right) \\
-&= \sum_{n=1}^{N/2}\left(\frac{1}{n-\frac{3}{4}}-\frac{1}{n-\frac{1}{4}}\right) \\
-&= \left[H\left(\frac{N}{2}-\frac{3}{4}\right)-H\left(-\frac{3}{4}\right)\right]-\left[H\left(\frac{N}{2}-\frac{1}{4}\right)-H\left(-\frac{1}{4}\right)\right]
-\end{aligned}$$
+$$\pi_N=\left[H\left(\frac{N}{2}-\frac{3}{4}\right)-H\left(-\frac{3}{4}\right)\right]-\left[H\left(\frac{N}{2}-\frac{1}{4}\right)-H\left(-\frac{1}{4}\right)\right]$$
 
-and
+$$\pi=H\left(-\frac{1}{4}\right)-H\left(-\frac{3}{4}\right)$$
 
-$$\begin{aligned}
-\pi &= \sum_{n=1}^{\infty}(-1)^{n+1}\frac{4}{2n-1} \\
-&= \sum_{n=1}^{\infty}\left(\frac{1}{n-\frac{3}{4}}-\frac{1}{n-\frac{1}{4}}\right) \\
-&= -\sum_{n=1}^{\infty}\left(\frac{1}{n}-\frac{1}{n-\frac{3}{4}}\right)+\sum_{n=1}^{\infty}\left(\frac{1}{n}-\frac{1}{n-\frac{1}{4}}\right) \\
-&= H\left(-\frac{1}{4}\right)-H\left(-\frac{3}{4}\right)
-\end{aligned}$$
-
-So finally, we have $$\pi-\pi_N=H\left(\frac{N}{2}-\frac{1}{4}\right)-H\left(\frac{N}{2}-\frac{3}{4}\right)$$ which is precisely the error term we are interested in. All we need now is an asymptotic expansion of $$H(x)$$, which will tell us everything we want to know about the asymptotics of all harmonic-like series.
+Subtracting these equations, we have $$\pi-\pi_N=H\left(\frac{N}{2}-\frac{1}{4}\right)-H\left(\frac{N}{2}-\frac{3}{4}\right)$$ which is precisely the error term we are interested in. All we need now is an asymptotic expansion of $$H(x)$$, which will tell us everything we want to know about the asymptotics of all harmonic-like series.
 
 [1]: https://en.wikipedia.org/wiki/Chudnovsky_algorithm
