@@ -1,0 +1,160 @@
+---
+layout: post
+title: An interesting pattern in the digits of various infinite series
+---
+{% include mathjax.html %}
+
+## **An interesting pattern**
+
+Perhaps the most well-known infinite series for $$\pi$$ is the Leibniz formula
+
+$$\pi=\sum_{n=1}^{\infty}(-1)^{n+1}\frac{4}{2n-1}=\frac{4}{1}-\frac{4}{3}+\frac{4}{5}-\frac{4}{7}+\cdots$$
+
+Unfortunately, while this formula is very simple and easy to remember, it converges extremely slowly. Let $$a_n=4/(2n-1)$$ and let $$\pi_N$$ be the above series truncated after $$N$$ terms. Then by the alternating series test, we have $$\left\vert\pi_N-\pi\right\vert\leq a_{N+1}\sim 2/N$$ as an upper bound for the error. This estimate for the error turns out to be of the correct order, which implies that if we want to calculate $$d$$ digits of $$\pi$$, we need to take $$N$$ exponentially large in $$d$$.
+
+Let's make a table of $$\pi_{10^N}$$ for various values of $$N$$, so we can see just how slowly the sum converges.
+
+$$\begin{array}{c|c}
+ N & \pi_{10^N} \\
+ \hline
+ 0 & 4.000000000000000000000000000000 \\
+ 1 & \color{green}{3}.041839618929402211135957265988 \\
+ 2 & \color{green}{3.1}31592903558552764307414238276 \\
+ 3 & \color{green}{3.14}0592653839792925963596502869 \\
+ 4 & \color{green}{3.141}492653590043238459518383374 \\
+ 5 & \color{green}{3.1415}82653589793488462643352029 \\
+ 6 & \color{green}{3.14159}1653589793238712643383279 \\
+ 7 & \color{green}{3.141592}553589793238462893383279 \\
+ 8 & \color{green}{3.1415926}43589793238462643633279 \\
+ 9 & \color{green}{3.14159265}2589793238462643383529 \\
+ \hline
+ \infty & \color{green}{3.141592653589793238462643383279}
+\end{array}$$
+
+So very slowly indeed. Even summing 10 trillion ($$10^{13}$$) terms gives a worse approximation than a *single term* of the [Chudnovsky formula][1].
+
+However, looking at this table, there is clearly something more interesting going on. After the first incorrect digit, the next few digits are correct again! This seems like very strange behaviour. Usually when we calculate an approximation of an infinite series, product, limit, etc. the first few digits will be correct and the rest will appear totally random.
+
+Let's rewrite the table but with greater precision, and let's highlight all of the correct and incorrect digits.
+
+$$\begin{array}{c|c}
+ N & \pi_{10^N} \\
+ \hline
+ 0 & \color{red}{4.0000000000000000000000000000000}\color{green}{0}\color{red}{00000000000000000}\color{green}{0}\color{red}{000}\color{green}{0}\color{red}{000000} \\
+ 1 & \color{green}{3.}\color{red}{0}\color{green}{41}\color{red}{839}\color{green}{6}\color{red}{1892}\color{green}{9}\color{red}{402}\color{green}{2}\color{red}{1113595726598822574054}\color{green}{7}\color{red}{7219718}\color{green}{7}\color{red}{057868172}\color{green}{4}\color{red}{192} \\
+ 2 & \color{green}{3.1}\color{red}{3}\color{green}{1592}\color{red}{90}\color{green}{35}\color{red}{58552764307414238}\color{green}{27}\color{red}{6920516403054}\color{green}{3}\color{red}{8440657}\color{green}{5}\color{red}{651389662} \\
+ 3 & \color{green}{3.14}\color{red}{0}\color{green}{592653}\color{red}{83}\color{green}{979}\color{red}{29259}\color{green}{6}\color{red}{359650286}\color{green}{9}\color{red}{39597045138}\color{green}{93}\color{red}{307}\color{green}{7}\color{red}{9724489367457} \\
+ 4 & \color{green}{3.141}\color{red}{4}\color{green}{926535}\color{red}{9004}\color{green}{32384}\color{red}{59518}\color{green}{383}\color{red}{3}\color{green}{7}\color{red}{481537878}\color{green}{7}\color{red}{013642744}\color{green}{1}\color{red}{8046}\color{green}{0}\color{red}{513479} \\
+ 5 & \color{green}{3.1415}\color{red}{8}\color{green}{2653589793}\color{red}{48}\color{green}{84626433}\color{red}{5202}\color{green}{95028}\color{red}{9372841}\color{green}{939}\color{red}{3964949575}\color{green}{9}\color{red}{08635} \\
+ 6 & \color{green}{3.14159}\color{red}{1}\color{green}{653589793238}\color{red}{71}\color{green}{2643383279}\color{red}{1903}\color{green}{841971}\color{red}{70}\color{green}{3}\color{red}{52500}\color{green}{1058}\color{red}{1556}\color{green}{4}\color{red}{788} \\
+ 7 & \color{green}{3.141592}\color{red}{5}\color{green}{53589793238462}\color{red}{89}\color{green}{338327950288}\color{red}{1072}\color{green}{169399375}\color{red}{2}\color{green}{0}\color{red}{11334}\color{green}{74944} \\
+ 8 & \color{green}{3.1415926}\color{red}{4}\color{green}{3589793238462643}\color{red}{63}\color{green}{32795028841971}\color{red}{3814}\color{green}{93751058209}\color{red}{8}\color{green}{4}\color{red}{475} \\
+ 9 & \color{green}{3.14159265}\color{red}{2}\color{green}{589793238462643383}\color{red}{52}\color{green}{9502884197169399}\color{red}{0626}\color{green}{05820974944} \\
+ \hline
+ \infty & \color{green}{3.141592653589793238462643383279502884197169399375105820974944}
+\end{array}$$
+
+The pattern of correct and incorrect digits in $$\pi_{10^N}$$ really stands out as $$N$$ increases. We can see the following patterns quite clearly:
+- the first incorrect digit appears after $$N$$ correct digits, and is always $$1$$ too low
+- the second block of incorrect digits appears after roughly $$3N$$ digits, and is always $$25=5^2$$ too high
+- the third block of incorrect digits appears after roughly $$5N$$ digits, and is always $$3125=5^5$$ too low
+- the fourth block of incorrect digits appears after roughly $$7N$$ digits, and is always $$953125=5^6\cdot 61$$ too high
+- ...
+
+This suggests the existence of an asymptotic error formula (an infinite series of "correction" terms) that can be added to $$\pi_N$$ to yield a sequence of approximations with a much smaller error. Moreover, with a bit of experimentation, the patterns we noticed above seem to suggest that this asymptotic series begins
+
+$$\pi\stackrel{?}{=}\pi_N+\frac{1}{N}-\frac{1}{4N^3}+\frac{5}{16N^5}-\frac{61}{64N^7}+\cdots$$
+
+so we expect some sort of alternating series in odd powers of $$1/N$$. The powers of 2 in the denominators, and the fact that the blocks of incorrect digits differed from the correct digits by multiples of powers of 5, seems to suggest that maybe we should take the number of terms to be 5 times a power of 10, instead of just a power of 10. This eliminates the powers of 2 from the denominators, giving the asymptotic formula
+
+$$\pi\stackrel{?}{=}\pi_{5\cdot 10^{N-1}}+\frac{2\cdot 1}{10^{N}}-\frac{2\cdot 1}{10^{3N}}+\frac{2\cdot 5}{10^{5N}}-\frac{2\cdot 61}{10^{7N}}+\cdots$$
+
+resulting in approximations with smaller blocks of incorrect digits:
+
+$$\begin{array}{c|c}
+ N & \pi_{5\cdot 10^{N-1}} \\
+ \hline
+ 1 & \color{green}{3.}\color{red}{33968}\color{green}{2}\color{red}{5396}\color{green}{8}\color{red}{2539682539}\color{green}{6}\color{red}{82539682}\color{green}{5}\color{red}{396}\color{green}{8}\color{red}{253968253}\color{green}{9}\color{red}{682539682539682} \\
+ 2 & \color{green}{3.1}\color{red}{2}\color{green}{159}\color{red}{4}\color{green}{65}\color{red}{2}\color{green}{5}\color{red}{9101047}\color{green}{8}\color{red}{51318297430}\color{green}{9}\color{red}{49}\color{green}{2}\color{red}{4329217}\color{green}{69}\color{red}{645}\color{green}{37}\color{red}{1316046487107} \\
+ 3 & \color{green}{3.1}\color{red}{39}\color{green}{59265}\color{red}{5}\color{green}{5897}\color{red}{8}\color{green}{3238}\color{red}{584}\color{green}{64}\color{red}{061}\color{green}{3}\color{red}{380}\color{green}{5}\color{red}{39479065852583159834568147197} \\
+ 4 & \color{green}{3.141}\color{red}{3}\color{green}{926535}\color{red}{91}\color{green}{793238}\color{red}{3}\color{green}{626433}\color{red}{954}\color{green}{7950}\color{red}{011}\color{green}{419}\color{red}{8}\color{green}{1}\color{red}{7}\color{green}{9}\color{red}{818834553219696518} \\
+ 5 & \color{green}{3.1415}\color{red}{7}\color{green}{265358979}\color{red}{5}\color{green}{23846264}\color{red}{2}\color{green}{38327950}\color{red}{410}\color{green}{419716}\color{red}{662}\color{green}{93751}\color{red}{1}\color{green}{5}\color{red}{9}\color{green}{2}\color{red}{51}\color{green}{74}\color{red}{890} \\
+ 6 & \color{green}{3.14159}\color{red}{0}\color{green}{6535897932}\color{red}{40}\color{green}{4626433832}\color{red}{6}\color{green}{9502884197}\color{red}{291}\color{green}{39937510}\color{red}{305}\color{green}{0974944} \\
+ 7 & \color{green}{3.141592}\color{red}{4}\color{green}{5358979323846}\color{red}{4}\color{green}{643383279502}\color{red}{7}\color{green}{841971693993}\color{red}{873}\color{green}{0582097494}\color{red}{1} \\
+ 8 & \color{green}{3.1415926}\color{red}{3}\color{green}{358979323846264}\color{red}{5}\color{green}{38327950288419}\color{red}{6}\color{green}{16939937510582}\color{red}{219}\color{green}{4944} \\
+ 9 & \color{green}{3.14159265}\color{red}{1}\color{green}{58979323846264338}\color{red}{5}\color{green}{2795028841971693}\color{red}{8}\color{green}{9375105820974944} \\
+ \hline
+ \infty & \color{green}{3.141592653589793238462643383279502884197169399375105820974944}
+\end{array}$$
+
+Quite impressive to look at. The question, then, is what *is* the error series? What are the numbers $$1, 1, 5, 61, \dots$$?
+
+Exercise for the reader: use the table above to find the next two terms of the error series, and hence the next two terms of the sequence $$1, 1, 5, 61, \dots$$.
+
+## **Generalised Harmonic Numbers**
+
+In calculus, we often study the Taylor/power series expansion of a function $$f$$ at a point $$c$$,
+
+$$f(x)=f(c)+f'(c)(x-c)+f''(c)\frac{(x-c)^2}{2!}+f^{(3)}(x-c)\frac{(x-c)^3}{3!}+\cdots$$
+
+which "converts" information about the derivatives of $$f$$ at a single point $$c$$ into information about the value of $$f$$ for points $$x$$ close to $$c$$. This can be generalised to the power series at infinity, by considering the power series of $$f(1/x)$$ at zero.
+
+For a simple example, consider $$f(x)=1/(1-x)$$. This function has perhaps the most well-known of all power series at $$0$$, namely the geometric series $$f(x)=1+x+x^2+x^3+\cdots$$, which converges for $$\left\vert x\right\vert\lt 1$$. However, we can also take the power series at infinity. We have $$f(1/x)=-x/(1-x)=-x-x^2-x^3-\cdots$$, so the power series at infinity is
+
+$$f(x)=-\frac{1}{x}-\frac{1}{x^2}-\frac{1}{x^3}-\cdots$$
+
+which converges for $$\left\vert 1/x\right\vert\lt 1$$, or $$\left\vert x\right\vert\gt 1$$.
+
+Our desired asymptotic formula for $$\pi_N$$ looks like a power series at infinity. We can't directly use this fact though, because our function $$\pi_N$$ is only defined when $$N$$ is an integer, so it makes no sense to talk about its derivatives. Ideally, we would like to extend the definition of the series to a "nice" function defined on the reals so that we can use tools from analysis.
+
+We will define a function $$H$$ that generalises our series $$\pi_N$$ and allows us to study any series whose terms look like the reciprocal of a first degree polynomial.
+
+The *harmonic numbers* are the simplest series of this form, defined by
+
+$$H_n=\sum_{k=1}^{n}\frac{1}{k}=1+\frac{1}{2}+\cdots+\frac{1}{n}$$
+
+If we wish to generalise this to a function taking a real number as input, then the first problem that we need to fix is the fact that the parameter $$n$$ is the upper limit of the sum. A simple but clever solution to this problem is to rewrite the series as the infinite telescoping series
+
+$$\begin{aligned}
+H_n &= \color{green}{1+\frac{1}{2}+\cdots+\frac{1}{n}} \\
+&= \left(\color{green}{1}\color{red}{-\frac{1}{n+1}}\right)+\left(\color{green}{\frac{1}{2}}\color{blue}{-\frac{1}{n+2}}\right)+\cdots+\left(\color{green}{\frac{1}{n}}-\frac{1}{2n}\right)+\left(\color{red}{\frac{1}{n+1}}-\frac{1}{2n+1}\right)+\left(\color{blue}{\frac{1}{n+2}}-\frac{1}{2n+2}\right)+\cdots \\
+&= \sum_{k=1}^{\infty}\left(\frac{1}{k}-\frac{1}{k+n}\right)
+\end{aligned}$$
+
+The green terms are all of the original terms that are not cancelled out by any term in the sum. The two red terms are the first pair of terms to cancel, and the two blue terms are the second pair to cancel. The $$-1/(2n)$$ term will be cancelled later when the term $$1/(2n)-1/(3n)$$ is added, and so on.
+
+In fact, that is all we need to do to generalise $$H_n$$. We can now define the *generalised harmonic number*
+
+$$H(x)=\sum_{k=1}^{\infty}\left(\frac{1}{k}-\frac{1}{k+x}\right)$$
+
+for any real number $$x$$, except the negative integers (because we would have $$k+x=0$$ in one of the terms). We can now write a general $$1/(ak+b)$$ sum in terms of $$H(x)$$
+
+$$\begin{aligned}
+\sum_{k=1}^{n}\frac{1}{ak+b} &= \frac{1}{a}\sum_{k=1}^{n}\frac{1}{k+\frac{b}{a}} \\
+&= \frac{1}{a}\sum_{k=1}^{\infty}\left(\frac{1}{k+\frac{b}{a}}-\frac{1}{k+\frac{b}{a}+n}\right) \\
+&= \frac{1}{a}\sum_{k=1}^{\infty}\left(\left(\frac{1}{k}-\frac{1}{k+\frac{b}{a}+n}\right)-\left(\frac{1}{k}-\frac{1}{k+\frac{b}{a}}\right)\right) \\
+&= \frac{1}{a}\left[\sum_{k=1}^{\infty}\left(\frac{1}{k}-\frac{1}{k+\frac{b}{a}+n}\right)-\sum_{k=1}^{\infty}\left(\frac{1}{k}-\frac{1}{k+\frac{b}{a}}\right)\right] \\
+&= \frac{1}{a}\left(H\left(\frac{b}{a}+n\right)-H\left(\frac{b}{a}\right)\right)
+\end{aligned}$$
+
+Let's also rewrite $$\pi_N$$ in terms of $$H$$ (we'll just consider the case where $$N$$ is even)
+
+$$\begin{aligned}
+\pi_N &= \sum_{n=1}^{N}(-1)^{n+1}\frac{4}{2n-1} \\
+&= \sum_{n=1}^{N/2}\left(\frac{4}{4n-3}-\frac{4}{4n-1}\right) \\
+&= \sum_{n=1}^{N/2}\left(\frac{1}{n-\frac{3}{4}}-\frac{1}{n-\frac{1}{4}}\right) \\
+&= \left[H\left(\frac{N}{2}-\frac{3}{4}\right)-H\left(-\frac{3}{4}\right)\right]-\left[H\left(\frac{N}{2}-\frac{1}{4}\right)-H\left(-\frac{1}{4}\right)\right]
+\end{aligned}$$
+
+and
+
+$$\begin{aligned}
+\pi &= \sum_{n=1}^{\infty}(-1)^{n+1}\frac{4}{2n-1} \\
+&= \sum_{n=1}^{\infty}\left(\frac{1}{n-\frac{3}{4}}-\frac{1}{n-\frac{1}{4}}\right) \\
+&= -\sum_{n=1}^{\infty}\left(\frac{1}{n}-\frac{1}{n-\frac{3}{4}}\right)+\sum_{n=1}^{\infty}\left(\frac{1}{n}-\frac{1}{n-\frac{1}{4}}\right) \\
+&= H\left(-\frac{1}{4}\right)-H\left(-\frac{3}{4}\right)
+\end{aligned}$$
+
+So finally, we have $$\pi-\pi_N=H\left(\frac{N}{2}-\frac{1}{4}\right)-H\left(\frac{N}{2}-\frac{3}{4}\right)$$ which is precisely the error term we are interested in. All we need now is an asymptotic expansion of $$H(x)$$, which will tell us everything we want to know about the asymptotics of all harmonic-like series.
+
+[1]: https://en.wikipedia.org/wiki/Chudnovsky_algorithm
