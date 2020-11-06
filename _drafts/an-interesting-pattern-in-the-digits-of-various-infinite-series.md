@@ -176,6 +176,44 @@ This is the Euler Maclaurin formula. Although we are currently interpreting it a
 
 $$\sum_{n=a}^{b}f(n)=\int_a^b f(x)dx+\frac{f(a)+f(b)}{2}+\sum_{n=1}^{m}\frac{B_{2n}}{(2n)!}\left(f^{(2n-1)}(b)-f^{(2n-1)}(a)\right)+R_{m}$$
 
-There is a lot to be said about this formula and it really deserves a post of its own, which I plan to write in the near future. For now, we will just use the formula.
+There is a lot to be said about this formula and it really deserves a post of its own to explain all of the details we will use, which I plan to write in the near future. For now, we will just use the formula.
+
+## **Asymptotic expansion of the Harmonic Numbers**
+
+Before we apply the Euler Maclaurin formula to the generalised harmonic series, there are a few things we can do to clean it up a bit. Let's fix $$a=1$$ and let $$b=N$$. For each fixed $$m$$, the error term $$R_m$$ converges to a constant depending on $$m$$ as we take $$N$$ to infinity, as long as $$f^{(2m)}$$ does not grow too quickly. Let's rewrite the error term $$R_m$$ as $$C_m+R'_m$$ where $$C_m$$ is the limiting constant and $$R'_m\to 0$$ as $$N\to\infty$$.
+
+Now let's use the formula. Let $$x$$ be real number and $$m$$ be a fixed positive integer. The obvious choice for $$f$$ is to take $$f(t)=1/t-1/(t+x)$$, but this will give us an asymptotic series in terms of powers of $$x+1$$, rather than in powers of $$x$$. Instead, we define $$f(t)=1/t-1/(t+x-1)$$, so that $$\sum_{n=1}^{\infty}f(n)=H(x-1)$$. We can use the fact that $$H(x-1)+1/x=H(x)$$ and add back the extra $$1/x$$ term later. It is an easy exercise to check that
+
+$$f^{(r)}(t) = (-1)^{r}r!\left(\frac{1}{t^{r+1}}-\frac{1}{(t+x-1)^{r+1}}\right)$$
+
+For clarity, the error terms are denoted by $$C_{m,x}$$, etc. to emphasise the fact that they depend on the constant $$x$$. The Euler Maclaurin formula now says that
+
+$$\begin{aligned}
+\sum_{n=1}^{N}\frac{1}{n}-\frac{1}{n+x-1}
+&=\int_{1}^{N}\frac{1}{t}-\frac{1}{t+x-1}dt
++\frac{1-\frac{1}{x}+\frac{1}{N}-\frac{1}{N+x-1}}{2} \\
+&+\sum_{n=1}^{m}\frac{B_{2n}}{(2n)!}(-1)^{2n-1}(2n-1)!\left(\frac{1}{N^{2n}}-\frac{1}{(N+x-1)^{2n}}-1+\frac{1}{x^{2n}}\right) \\
+&+C_{m,x}+R'_{m,x} \\
+&=\color{red}{\log\left(\frac{N}{N+x-1}\right)}+\log(x)
++\frac{1-\frac{1}{x}+\color{red}{\frac{1}{N}-\frac{1}{N+x-1}}}{2} \\
+&-\sum_{n=1}^{m}\frac{B_{2n}}{2n}\left(\color{red}{\frac{1}{N^{2n}}-\frac{1}{(N+x-1)^{2n}}}-1+\frac{1}{x^{2n}}\right) \\
+&+C_{m,x}+\color{red}{R'_{m,x}} \\
+\end{aligned}$$
+
+Taking $$N\to\infty$$ kills off all of the terms in red, simplifying the formula significantly. Let's also add back the $$1/x$$ term from earlier.
+
+$$H(x)=\log(x)+\frac{1}{2}+\sum_{n=1}^{m}\frac{B_{2n}}{2n}+\frac{1}{2x}-\sum_{n=1}^{m}\frac{B_{2n}}{2nx^{2n}}+C_{m,x}$$
+
+We are almost done. To obtain the final asymptotic formula, subtract $$\log(x)$$ and consider what happens as $$x\to\infty$$. Of course, the terms containing negative powers of $$x$$ go to zero. It turns out that $$H(x)-\log(x)$$ converges to a constant, denoted by $$\gamma$$, and that $$C_{m,x}$$ also converges to a constant, call it $$C_m$$.
+
+$$\lim_{x\to\infty}H(x)-\log(x)=\gamma=\frac{1}{2}+\sum_{n=1}^{m}\frac{B_{2n}}{2n}+C_m$$
+
+Exercise for the reader: show that $$\lim_{x\to\infty}H(x)-\log(x)$$ exists.
+
+This shows that the right hand side is actually independent of $$m$$, completing the derivation of the asymptotic formula:
+
+$$\boxed{H(x)\sim\log(x)+\gamma+\frac{1}{2x}-\sum_{n=1}^{\infty}\frac{B_{2n}}{2nx^{2n}}}$$
+
+It is very important to emphasize that this is only an *asymptotic series*. The infinite sum above does *not* converge! If we truncate the series after $$m$$ terms, then the series gets closer to $$H(x)$$ as we take $$x$$ to infinity, but diverges as we take $$m$$ to infinity.
 
 [1]: https://en.wikipedia.org/wiki/Chudnovsky_algorithm
