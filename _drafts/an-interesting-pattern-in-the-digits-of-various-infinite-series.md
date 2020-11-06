@@ -145,4 +145,37 @@ $$\pi=H\left(-\frac{1}{4}\right)-H\left(-\frac{3}{4}\right)$$
 
 Subtracting these equations, we have $$\pi-\pi_N=H\left(\frac{N}{2}-\frac{1}{4}\right)-H\left(\frac{N}{2}-\frac{3}{4}\right)$$ which is precisely the error term we are interested in. All we need now is an asymptotic expansion of $$H(x)$$, which will tell us everything we want to know about the asymptotics of all harmonic-like series.
 
+## **Approximating sums by integrals**
+
+In introductory calculus, we learn that the area under a curve can be defined by first approximating the area using rectangles, and then increasing the number of rectangles to infinity by taking a limit. This limit is then called the *integral* of the function. We also learn that integrals can be very difficult to evaluate exactly and that for practical applications, a sufficiently close approximation of the integral is often good enough. This leads to the study of integral approximation formulas, the simplest of which comes directly from the definition: approximate the area by rectangles
+
+$$\int_a^b f(x)dx\approx h\left(f(x_0)+\cdots+f(x_n)\right)$$
+
+where $$h=(b-a)/n$$ and $$x_i=a+ih$$. This approximation is usually pretty bad. The error turns out to be proportional to the derivative of $$f$$ (for fixed $$a,b,n$$), so this is a *zeroth order* approximation.
+
+A better approximation is the trapezium rule, which as the name suggests, uses trapeziums instead of rectangles to approximate the area
+
+$$\begin{aligned}
+\int_a^b f(x)dx &\approx h\left(\frac{f(x_0)+f(x_1)}{2}+\cdots+\frac{f(x_{n-1})+f(x_n)}{2}\right) \\
+&= h\left(f(x_0)+\cdots+f(x_n)\right)-h\left(\frac{f(x_0)+f(x_n)}{2}\right)
+\end{aligned}$$
+
+The error in this approximation is proportional to the second derivative of $$f$$, so the trapezium rule gives a *first order* approximation of the integral. Notice also that this is just the rectangle approximation formula with an extra term added on. Naturally, we can ask if there are more terms that can be added on to get higher order approximations.
+
+The answer to this question is *yes*, there are approximation formulas like these of all degrees, and we can write even down a formula for all of them. For simplicity, let's take $$h=1$$ and $$a,b$$ to be integers. Then we have
+
+$$\int_a^b f(x)dx=
+\underbrace{\sum_{n=a}^{b}f(n)}_{\text{Rectangles}}
+-\underbrace{\frac{f(a)+f(b)}{2}}_{\text{Trapezium term}}
+-\underbrace{\sum_{n=1}^{m}\frac{B_{2n}}{(2n)!}\left(f^{(2n-1)}(b)-f^{(2n-1)}(a)\right)}_{\text{Higher order correction terms}}
+-\underbrace{R_{m}}_{\text{Error term}}$$
+
+where $$m$$ is the number of higher order correction terms and $$B_{2n}$$ are constants known as the *Bernoulli numbers*.
+
+This is the Euler Maclaurin formula. Although we are currently interpreting it as a general formula for numerical integration, its real theoretical power actually comes when we use the formula *in reverse*, to approximate sums by integrals, and this is how the formula is usually presented.
+
+$$\sum_{n=a}^{b}f(n)=\int_a^b f(x)dx+\frac{f(a)+f(b)}{2}+\sum_{n=1}^{m}\frac{B_{2n}}{(2n)!}\left(f^{(2n-1)}(b)-f^{(2n-1)}(a)\right)+R_{m}$$
+
+There is a lot to be said about this formula and it really deserves a post of its own, which I plan to write in the near future. For now, we will just use the formula.
+
 [1]: https://en.wikipedia.org/wiki/Chudnovsky_algorithm
