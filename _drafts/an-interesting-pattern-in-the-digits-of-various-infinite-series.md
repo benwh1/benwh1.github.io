@@ -10,7 +10,7 @@ Perhaps the most well-known infinite series for $$\pi$$ is the Leibniz formula
 
 $$\pi=\sum_{n=1}^{\infty}(-1)^{n+1}\frac{4}{2n-1}=\frac{4}{1}-\frac{4}{3}+\frac{4}{5}-\frac{4}{7}+\cdots$$
 
-Unfortunately, while this formula is very simple and easy to remember, it converges extremely slowly. Let $$a_n=4/(2n-1)$$ and let $$\pi_N$$ be the above series truncated after $$N$$ terms. Then by the alternating series test, we have $$\left\vert\pi_N-\pi\right\vert\leq a_{N+1}\sim 2/N$$ as an upper bound for the error. This estimate for the error turns out to be of the correct order, which implies that if we want to calculate $$d$$ digits of $$\pi$$, we need to take $$N$$ exponentially large in $$d$$.
+Unfortunately, while this formula is very simple and easy to remember, it converges extremely slowly. Let $$a_n=4/(2n-1)$$ and let $$\pi_N$$ be the above series truncated after $$N$$ terms. Then by the alternating series test, we have $$\left\vert\pi_N-\pi\right\vert\leq a_{N+1}\sim 2/N$$ as an upper bound for the error. This estimate for the error turns out to be of the correct order, which implies that if we want to calculate $$d$$ digits of $$\pi$$, we need to take $$N$$ to be exponential in $$d$$.
 
 Let's make a table of $$\pi_{10^N}$$ for various values of $$N$$, so we can see just how slowly the sum converges.
 
@@ -54,18 +54,18 @@ $$\begin{array}{c|c}
  \infty & \color{green}{3.141592653589793238462643383279502884197169399375105820974944}
 \end{array}$$
 
-The pattern of correct and incorrect digits in $$\pi_{10^N}$$ really stands out as $$N$$ increases. We can see the following patterns quite clearly:
+The pattern of correct and incorrect digits in $$\pi_{10^N}$$ really stands out as $$N$$ increases. We can pick out the following patterns quite clearly:
 - the first incorrect digit appears after $$N$$ correct digits, and is always $$1$$ too low
 - the second block of incorrect digits appears after roughly $$3N$$ digits, and is always $$25=5^2$$ too high
 - the third block of incorrect digits appears after roughly $$5N$$ digits, and is always $$3125=5^5$$ too low
 - the fourth block of incorrect digits appears after roughly $$7N$$ digits, and is always $$953125=5^6\cdot 61$$ too high
 - ...
 
-This suggests the existence of an asymptotic error formula (an infinite series of "correction" terms) that can be added to $$\pi_N$$ to yield a sequence of approximations with a much smaller error. Moreover, with a bit of experimentation, the patterns we noticed above seem to suggest that this asymptotic series begins
+This suggests the existence of an asymptotic error formula (an infinite sequence of "correction" terms) that can be added to $$\pi_N$$ to yield approximations with a much smaller error. Moreover, with a bit of experimentation, the patterns we noticed above seem to suggest that this asymptotic series begins
 
 $$\pi\stackrel{?}{=}\pi_N+\frac{1}{N}-\frac{1}{4N^3}+\frac{5}{16N^5}-\frac{61}{64N^7}+\cdots$$
 
-so we expect some sort of alternating series in odd powers of $$1/N$$. The powers of 2 in the denominators, and the fact that the blocks of incorrect digits differed from the correct digits by multiples of powers of 5, seems to suggest that maybe we should take the number of terms to be 5 times a power of 10, instead of just a power of 10. This eliminates the powers of 2 from the denominators, giving the asymptotic formula
+so we expect some sort of alternating series in odd powers of $$1/N$$. The powers of 2 in the denominators, and the fact that the blocks of incorrect digits differed from the correct digits by multiples of powers of 5, seems to suggest that maybe we should take the number of terms to be 5 times a power of 10, instead of just a power of 10. This has the effect of eliminating the powers of 2 from the denominators, giving the asymptotic formula
 
 $$\pi\stackrel{?}{=}\pi_{5\cdot 10^{N-1}}+\frac{2\cdot 1}{10^{N}}-\frac{2\cdot 1}{10^{3N}}+\frac{2\cdot 5}{10^{5N}}-\frac{2\cdot 61}{10^{7N}}+\cdots$$
 
@@ -87,9 +87,9 @@ $$\begin{array}{c|c}
  \infty & \color{green}{3.141592653589793238462643383279502884197169399375105820974944}
 \end{array}$$
 
-Quite impressive to look at. The question, then, is what *is* the error series? What are the numbers $$1, 1, 5, 61, \dots$$?
+which is quite impressive to look at. The question, then, is what *is* the error series? What are the numbers $$1, 1, 5, 61, \dots$$?
 
-Exercise for the reader: use the table above to find the next two terms of the error series, and hence the next two terms of the sequence $$1, 1, 5, 61, \dots$$.
+Exercise for the reader: use the table above to predict the next two terms of the error series, and hence the next two terms of the sequence $$1, 1, 5, 61, \dots$$.
 
 ## **Generalised Harmonic Numbers**
 
@@ -113,7 +113,7 @@ The *harmonic numbers* are the simplest series of this form, defined by
 
 $$H_n=\sum_{k=1}^{n}\frac{1}{k}=1+\frac{1}{2}+\cdots+\frac{1}{n}$$
 
-If we wish to generalise this to a function taking a real number as input, then the first problem that we need to fix is the fact that the parameter $$n$$ is the upper limit of the sum. A simple but clever solution to this problem is to rewrite the series as the infinite telescoping series
+If we wish to generalise this to a function taking a real number as input, then the first problem that we need to fix is the fact that the parameter $$n$$ appears as the upper limit of a sum. A clever but simple solution to this problem is to rewrite the series as the infinite telescoping series
 
 $$\begin{aligned}
 H_n &= \color{green}{1+\frac{1}{2}+\cdots+\frac{1}{n}} \\
@@ -127,7 +127,7 @@ In fact, that is all we need to do to generalise $$H_n$$. We can now define the 
 
 $$H(x)=\sum_{k=1}^{\infty}\left(\frac{1}{k}-\frac{1}{k+x}\right)$$
 
-for any real number $$x$$, except the negative integers (because we would have $$k+x=0$$ in one of the terms). We can now write a general $$1/(ak+b)$$ sum in terms of $$H(x)$$
+for any real number $$x$$, except the negative integers (because we would have $$k+x=0$$ in one of the terms). We can now write a general "harmonic-like" sum in terms of $$H(x)$$
 
 $$\begin{aligned}
 \sum_{k=1}^{n}\frac{1}{ak+b} &= \frac{1}{a}\sum_{k=1}^{n}\frac{1}{k+\frac{b}{a}} \\
@@ -180,7 +180,7 @@ There is a lot to be said about this formula and it really deserves a post of it
 
 ## **Asymptotic expansion of the Harmonic Numbers**
 
-Before we apply the Euler Maclaurin formula to the generalised harmonic series, there are a few things we can do to clean it up a bit. Let's fix $$a=1$$ and let $$b=N$$. For each fixed $$m$$, the error term $$R_m$$ converges to a constant depending on $$m$$ as we take $$N$$ to infinity, as long as $$f^{(2m)}$$ does not grow too quickly. Let's rewrite the error term $$R_m$$ as $$C_m+R'_m$$ where $$C_m$$ is the limiting constant and $$R'_m\to 0$$ as $$N\to\infty$$.
+Before we apply the Euler Maclaurin formula to the generalised harmonic series, there are a few things we can do to clean it up a bit. Let's fix $$a=1$$ and let $$b=N$$. For each fixed $$m$$, the error term $$R_m$$ converges to a constant depending on $$m$$ as we take $$N$$ to infinity, as long as $$f^{(2m)}$$ is well-behaved. Let's rewrite the error term $$R_m$$ as $$C_m+R'_m$$ where $$C_m$$ is the limiting constant and $$R'_m\to 0$$ as $$N\to\infty$$.
 
 Now let's use the formula. Let $$x$$ be real number and $$m$$ be a fixed positive integer. The obvious choice for $$f$$ is to take $$f(t)=1/t-1/(t+x)$$, but this will give us an asymptotic series in terms of powers of $$x+1$$, rather than in powers of $$x$$. Instead, we define $$f(t)=1/t-1/(t+x-1)$$, so that $$\sum_{n=1}^{\infty}f(n)=H(x-1)$$. We can use the fact that $$H(x-1)+1/x=H(x)$$ and add back the extra $$1/x$$ term later. It is an easy exercise to check that
 
@@ -204,7 +204,7 @@ Taking $$N\to\infty$$ kills off all of the terms in red, simplifying the formula
 
 $$H(x)=\log(x)+\frac{1}{2}+\sum_{n=1}^{m}\frac{B_{2n}}{2n}+\frac{1}{2x}-\sum_{n=1}^{m}\frac{B_{2n}}{2nx^{2n}}+C_{m,x}$$
 
-We are almost done. To obtain the final asymptotic formula, subtract $$\log(x)$$ and consider what happens as $$x\to\infty$$. Of course, the terms containing negative powers of $$x$$ go to zero. It turns out that $$H(x)-\log(x)$$ converges to a constant, denoted by $$\gamma$$, and that $$C_{m,x}$$ also converges to a constant, call it $$C_m$$.
+We are almost done. To obtain the final asymptotic formula, subtract $$\log(x)$$ and consider what happens as $$x\to\infty$$. Of course, the terms containing negative powers of $$x$$ go to zero. It turns out that $$H(x)-\log(x)$$ converges to a constant, denoted by $$\gamma$$, and that $$C_{m,x}$$ also converges to a constant, call it $$C_m$$. So we have
 
 $$\lim_{x\to\infty}H(x)-\log(x)=\gamma=\frac{1}{2}+\sum_{n=1}^{m}\frac{B_{2n}}{2n}+C_m$$
 
@@ -214,6 +214,6 @@ This shows that the right hand side is actually independent of $$m$$, completing
 
 $$\boxed{H(x)\sim\log(x)+\gamma+\frac{1}{2x}-\sum_{n=1}^{\infty}\frac{B_{2n}}{2nx^{2n}}}$$
 
-It is very important to emphasize that this is only an *asymptotic series*. The infinite sum above does *not* converge! If we truncate the series after $$m$$ terms, then the series gets closer to $$H(x)$$ as we take $$x$$ to infinity, but diverges as we take $$m$$ to infinity.
+It is very important to emphasize that this is only an *asymptotic series*. The infinite sum above does *not* converge! If we truncate the series after $$m$$ terms, then the formula gets closer to $$H(x)$$ as we take $$x$$ to infinity, but diverges as we take $$m$$ to infinity.
 
 [1]: https://en.wikipedia.org/wiki/Chudnovsky_algorithm
