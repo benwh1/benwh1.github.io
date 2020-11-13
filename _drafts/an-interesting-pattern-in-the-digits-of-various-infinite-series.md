@@ -229,4 +229,24 @@ H(x)&\sim\log(x)+\gamma+\frac{1}{2x}-\sum_{n=2}^{\infty}\frac{B_n}{nx^n} \\
 
 It is very important to emphasize that this is only an *asymptotic series*. The infinite sum above does *not* converge! If we truncate the series after $$m$$ terms, then the formula gets closer to $$H(x)$$ as we take $$x$$ to infinity, but diverges as we take $$m$$ to infinity.
 
+We can now calculate the asymptotic formula for $$H(x-c)$$.
+
+$$\begin{aligned}
+H(x-c)&\sim\color{red}{\log(x-c)}+\gamma-\sum_{n=1}^{\infty}\frac{B_n}{n\color{green}{(x-c)^{n}}} \\
+&= \color{red}{\log(x)-\sum_{n=1}^{\infty}\frac{c^n}{nx^n}}+\gamma-\sum_{n=1}^{\infty}\frac{B_n}{n}\color{green}{\sum_{k=0}^{\infty}\binom{n+k-1}{k}c^k x^{-n-k}} \\
+&= \log(x)-\sum_{n=1}^{\infty}\frac{c^n}{nx^n}+\gamma-\sum_{n=1}^{\infty}\sum_{k=0}^{\infty}\frac{B_n}{n+k}\binom{n+k}{k}c^k x^{-n-k}
+\end{aligned}$$
+
+Next, we sum over diagonals by making the substitution $$n+k=d$$.
+
+$$\begin{aligned}
+H(x-c)&\sim\log(x)-\sum_{n=1}^{\infty}\frac{c^n}{nx^n}+\gamma-\sum_{d=1}^{\infty}\sum_{i=0}^{d-1}B_{d-i}\binom{d}{i}c^i \frac{1}{dx^d} \\
+&= \log(x)+\gamma-\sum_{d=1}^{\infty}\underbrace{\left[c^d+\sum_{i=0}^{d-1}B_{d-i}\binom{d}{i}c^i\right]}_{\text{Bernoulli polynomial }B_d(c)}\frac{1}{dx^d} \\
+&= \log(x)+\gamma-\sum_{n=1}^{\infty}\frac{B_n(c)}{nx^n} \\
+\end{aligned}$$
+
+So finally, we have
+
+$$\boxed{H(\alpha x+\beta)\sim\log(x)+\log(\alpha)+\gamma-\sum_{n=1}^{\infty}\frac{B_n(-\beta)}{n\alpha^n x^n}}$$
+
 [1]: https://en.wikipedia.org/wiki/Chudnovsky_algorithm
