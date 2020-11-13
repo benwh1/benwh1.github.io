@@ -143,7 +143,7 @@ $$\pi_N=\left[H\left(\frac{N}{2}-\frac{3}{4}\right)-H\left(-\frac{3}{4}\right)\r
 
 $$\pi=H\left(-\frac{1}{4}\right)-H\left(-\frac{3}{4}\right)$$
 
-Subtracting these equations, we have $$\pi-\pi_N=H\left(\frac{N}{2}-\frac{1}{4}\right)-H\left(\frac{N}{2}-\frac{3}{4}\right)$$ which is precisely the error term we are interested in. All we need now is an asymptotic expansion of $$H(x)$$, which will tell us everything we want to know about the asymptotics of all harmonic-like series.
+Subtracting these equations, we have $$\pi-\pi_N=H\left(\frac{N}{2}-\frac{1}{4}\right)-H\left(\frac{N}{2}-\frac{3}{4}\right)$$ which is precisely the error term we are interested in. All we need now is an asymptotic expansion of $$H(\alpha x+\beta)$$ for arbitrary constants $$\alpha,\beta$$, which will tell us everything we want to know about the asymptotics of all harmonic-like series.
 
 ## **Approximating sums by integrals**
 
@@ -167,52 +167,65 @@ The answer to this question is *yes*, there are approximation formulas like thes
 $$\int_a^b f(x)dx=
 \underbrace{\sum_{n=a}^{b}f(n)}_{\text{Rectangles}}
 -\underbrace{\frac{f(a)+f(b)}{2}}_{\text{Trapezium term}}
--\underbrace{\sum_{n=1}^{m}\frac{B_{2n}}{(2n)!}\left(f^{(2n-1)}(b)-f^{(2n-1)}(a)\right)}_{\text{Higher order correction terms}}
+-\underbrace{\sum_{n=2}^{m}\frac{B_n}{n!}\left(f^{(n-1)}(b)-f^{(n-1)}(a)\right)}_{\text{Higher order correction terms}}
 -\underbrace{R_{m}}_{\text{Error term}}$$
 
-where $$m$$ is the number of higher order correction terms and $$B_{2n}$$ are constants known as the *Bernoulli numbers*.
+where $$m$$ is the order of the approximation and $$B_n$$ are constants known as the *Bernoulli numbers*, the first few of which are listed in the table below.
 
-This is the Euler Maclaurin formula. Although we are currently interpreting it as a general formula for numerical integration, its real theoretical power actually comes when we use the formula *in reverse*, to approximate sums by integrals, and this is how the formula is usually presented.
+$$\begin{array}{c|ccccccccccccccccc}
+ n & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 \\
+ \hline
+ B_n & 1 & -\frac{1}{2} & \frac{1}{6} & 0 & -\frac{1}{30} & 0 & \frac{1}{42} & 0 & -\frac{1}{30} & 0 & \frac{5}{66} & 0 & -\frac{691}{2730} & 0 & \frac{7}{6} \\
+\end{array}$$
 
-$$\sum_{n=a}^{b}f(n)=\int_a^b f(x)dx+\frac{f(a)+f(b)}{2}+\sum_{n=1}^{m}\frac{B_{2n}}{(2n)!}\left(f^{(2n-1)}(b)-f^{(2n-1)}(a)\right)+R_{m}$$
+This is the Euler Maclaurin formula. Although we are currently interpreting it as a general formula for numerical integration, its main use actually comes when we use the formula *in reverse*, to approximate sums by integrals, and this is how the formula is usually presented.
+
+$$\sum_{n=a}^{b}f(n)=\int_a^b f(x)dx+\frac{f(a)+f(b)}{2}+\sum_{n=2}^{m}\frac{B_n}{n!}\left(f^{(n-1)}(b)-f^{(n-1)}(a)\right)+R_{m}$$
 
 There is a lot to be said about this formula and it really deserves a post of its own to explain all of the details we will use, which I plan to write in the near future. For now, we will just use the formula.
 
 ## **Asymptotic expansion of the Harmonic Numbers**
 
-Before we apply the Euler Maclaurin formula to the generalised harmonic series, there are a few things we can do to clean it up a bit. Let's fix $$a=1$$ and let $$b=N$$. For each fixed $$m$$, the error term $$R_m$$ converges to a constant depending on $$m$$ as we take $$N$$ to infinity, as long as $$f^{(2m)}$$ is well-behaved. Let's rewrite the error term $$R_m$$ as $$C_m+R'_m$$ where $$C_m$$ is the limiting constant and $$R'_m\to 0$$ as $$N\to\infty$$.
+We will first derive the asymptotic expansion of $$H(x)$$ by using the Euler Maclaurin formula, and then derive the asymptotic expansion of $$H(x-c)$$ from the result, where $$c$$ is an arbitrary constant. By replacing $$x$$ with $$\alpha x$$ and $$c$$ with $$-\beta$$, this is enough to asymptotically expand $$H(\alpha x+\beta)$$, which is our goal.
 
-Now let's use the formula. Let $$x$$ be real number and $$m$$ be a fixed positive integer. The obvious choice for $$f$$ is to take $$f(t)=1/t-1/(t+x)$$, but this will give us an asymptotic series in terms of powers of $$x+1$$, rather than in powers of $$x$$. Instead, we define $$f(t)=1/t-1/(t+x-1)$$, so that $$\sum_{n=1}^{\infty}f(n)=H(x-1)$$. We can use the fact that $$H(x-1)+1/x=H(x)$$ and add back the extra $$1/x$$ term later. It is an easy exercise to check that
+Before we apply the Euler Maclaurin formula to the generalised harmonic series, there are a few things we can do to clean it up a bit. Let's fix $$a=1$$ and let $$b=N$$. For each fixed $$m$$, the error term $$R_m$$ converges to a constant depending on $$m$$ as we take $$N$$ to infinity, as long as $$f^{(m)}$$ is "well-behaved". Let's rewrite the error term $$R_m$$ as $$C_m+R'_m$$ where $$C_m$$ is the limiting constant and $$R'_m\to 0$$ as $$N\to\infty$$.
 
-$$f^{(r)}(t) = (-1)^{r}r!\left(\frac{1}{t^{r+1}}-\frac{1}{(t+x-1)^{r+1}}\right)$$
+Now let's use the formula. Let $$x$$ be a real number and $$m$$ be a fixed positive integer. The obvious choice for $$f$$ is to take $$f(t)=1/t-1/(t+x)$$, but this will give us an asymptotic series in terms of powers of $$x+1$$, rather than in powers of $$x$$. Instead, we define $$f(t)=1/t-1/(t+x-1)$$, so that $$\sum_{n=1}^{\infty}f(n)=H(x-1)$$. We can use the fact that $$H(x-1)+1/x=H(x)$$ and add back the extra $$1/x$$ term later. For clarity, denote the error terms by $$C_{m,x}$$ and $$R'_{m,x}$$ to emphasise the fact that they depend on the constant $$x$$.
 
-For clarity, the error terms are denoted by $$C_{m,x}$$, etc. to emphasise the fact that they depend on the constant $$x$$. The Euler Maclaurin formula now says that
+Using the fact that
+
+$$f^{(r)}(t)=(-1)^{r}r!\left(\frac{1}{t^{r+1}}-\frac{1}{(t+x-1)^{r+1}}\right),$$
+
+the Euler Maclaurin formula now says that
 
 $$\begin{aligned}
 \sum_{n=1}^{N}\frac{1}{n}-\frac{1}{n+x-1}
 &=\int_{1}^{N}\frac{1}{t}-\frac{1}{t+x-1}dt
 +\frac{1-\frac{1}{x}+\frac{1}{N}-\frac{1}{N+x-1}}{2} \\
-&+\sum_{n=1}^{m}\frac{B_{2n}}{(2n)!}(-1)^{2n-1}(2n-1)!\left(\frac{1}{N^{2n}}-\frac{1}{(N+x-1)^{2n}}-1+\frac{1}{x^{2n}}\right) \\
+&+\sum_{n=2}^{m}\frac{B_n}{n!}(-1)^{n-1}(n-1)!\left(\frac{1}{N^n}-\frac{1}{(N+x-1)^n}-1+\frac{1}{x^n}\right) \\
 &+C_{m,x}+R'_{m,x} \\
 &=\color{red}{\log\left(\frac{N}{N+x-1}\right)}+\log(x)
 +\frac{1-\frac{1}{x}+\color{red}{\frac{1}{N}-\frac{1}{N+x-1}}}{2} \\
-&-\sum_{n=1}^{m}\frac{B_{2n}}{2n}\left(\color{red}{\frac{1}{N^{2n}}-\frac{1}{(N+x-1)^{2n}}}-1+\frac{1}{x^{2n}}\right) \\
+&-\sum_{n=2}^{m}\frac{B_n}{n}(-1)^n\left(\color{red}{\frac{1}{N^n}-\frac{1}{(N+x-1)^n}}-1+\frac{1}{x^n}\right) \\
 &+C_{m,x}+\color{red}{R'_{m,x}} \\
 \end{aligned}$$
 
-Taking $$N\to\infty$$ kills off all of the terms in red, simplifying the formula significantly. Let's also add back the $$1/x$$ term from earlier.
+Taking $$N\to\infty$$ eliminates all of the terms in red, simplifying the formula significantly. Also, it turns out that the *odd* Bernoulli numbers $$B_3, B_5, \dots$$ are all zero, so the $$(-1)^n$$ term inside the sum has no effect and can be removed. Let's also add back the $$1/x$$ term from earlier. The resulting formula is
 
-$$H(x)=\log(x)+\frac{1}{2}+\sum_{n=1}^{m}\frac{B_{2n}}{2n}+\frac{1}{2x}-\sum_{n=1}^{m}\frac{B_{2n}}{2nx^{2n}}+C_{m,x}$$
+$$H(x)=\log(x)+\frac{1}{2}+\frac{1}{2x}+\sum_{n=2}^{m}\frac{B_n}{n}\left(1-\frac{1}{x^n}\right)+C_{m,x}$$
 
-We are almost done. To obtain the final asymptotic formula, subtract $$\log(x)$$ and consider what happens as $$x\to\infty$$. Of course, the terms containing negative powers of $$x$$ go to zero. It turns out that $$H(x)-\log(x)$$ converges to a constant, denoted by $$\gamma$$, and that $$C_{m,x}$$ also converges to a constant, call it $$C_m$$. So we have
+To obtain the final asymptotic formula for $$H(x)$$, subtract $$\log(x)$$ and consider what happens as $$x\to\infty$$. Of course, the terms containing negative powers of $$x$$ go to zero. It turns out that $$H(x)-\log(x)$$ converges to a constant, denoted by $$\gamma$$, and that $$C_{m,x}$$ also converges to a constant $$C_m$$ depending on $$m$$. So we have
 
-$$\lim_{x\to\infty}H(x)-\log(x)=\gamma=\frac{1}{2}+\sum_{n=1}^{m}\frac{B_{2n}}{2n}+C_m$$
+$$\lim_{x\to\infty}H(x)-\log(x)=\gamma=\frac{1}{2}+\sum_{n=2}^{m}\frac{B_n}{n}+C_m$$
 
 Exercise for the reader: show that $$\lim_{x\to\infty}H(x)-\log(x)$$ exists.
 
 This shows that the right hand side is actually independent of $$m$$, completing the derivation of the asymptotic formula:
 
-$$\boxed{H(x)\sim\log(x)+\gamma+\frac{1}{2x}-\sum_{n=1}^{\infty}\frac{B_{2n}}{2nx^{2n}}}$$
+$$\begin{aligned}
+H(x)&\sim\log(x)+\gamma+\frac{1}{2x}-\sum_{n=2}^{\infty}\frac{B_n}{nx^n} \\
+&=\log(x)+\gamma-\sum_{n=1}^{\infty}\frac{B_n}{nx^n}
+\end{aligned}$$
 
 It is very important to emphasize that this is only an *asymptotic series*. The infinite sum above does *not* converge! If we truncate the series after $$m$$ terms, then the formula gets closer to $$H(x)$$ as we take $$x$$ to infinity, but diverges as we take $$m$$ to infinity.
 
