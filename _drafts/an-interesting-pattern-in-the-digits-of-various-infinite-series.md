@@ -65,14 +65,22 @@ This suggests the existence of an asymptotic error formula (an infinite sequence
 
 $$\pi\stackrel{?}{=}\pi_N+\frac{1}{N}-\frac{1}{4N^3}+\frac{5}{16N^5}-\frac{61}{64N^7}+\cdots$$
 
-so we expect some sort of alternating series in odd powers of $$1/N$$. The powers of 2 in the denominators, and the fact that the blocks of incorrect digits differed from the correct digits by multiples of powers of 5, seems to suggest that maybe we should *halve* the number of terms we are summing. By replacing $$N$$ with $$N/2$$ in the above formula, we eliminate the powers of 2 from the denominators. This isn't necessary to do of course, it just makes things a bit simpler. Looking at the case where the number of terms is now half of a power of 10, we get the asymptotic formula
+so we expect some sort of alternating series in odd powers of $$1/N$$.
 
-$$\pi\stackrel{?}{=}\pi_{5\cdot 10^{k-1}}+\frac{2\cdot 1}{10^{k}}-\frac{2\cdot 1}{10^{3k}}+\frac{2\cdot 5}{10^{5k}}-\frac{2\cdot 61}{10^{7k}}+\cdots$$
+(Note: this relies on the number of terms $$N$$ being even, so that we sum an equal number of positive and negative terms. We will assume $$N$$ to be even throughout the rest of this post.)
 
-resulting in approximations with smaller blocks of incorrect digits:
+All of the powers of 2 in the denominators seem to suggest that maybe we should replace $$N$$ by $$N/2$$ to eliminate them, i.e. that we should *halve* the number of terms we are summing. This isn't necessary to do of course, it just makes the formula look a bit simpler. This gives us the asymptotic formula
+
+$$\pi\stackrel{?}{=}\pi_{N/2}+2\left(\frac{1}{N}-\frac{1}{N^3}+\frac{5}{N^5}-\frac{61}{N^7}+\cdots\right)$$
+
+Or, taking $$N=10^k$$ as before,
+
+$$\pi\stackrel{?}{=}\pi_{10^k/2}+2\left(\frac{1}{10^k}-\frac{1}{10^{3k}}+\frac{5}{10^{5k}}-\frac{61}{10^{7k}}+\cdots\right)$$
+
+This results in approximations of $$\pi$$ that have smaller blocks of incorrect digits:
 
 $$\begin{array}{c|c}
- k & \pi_{5\cdot 10^{k-1}} \\
+ k & \pi_{10^{k}/2} \\
  \hline
  1 & \color{green}{3.}\color{red}{33968}\color{green}{2}\color{red}{5396}\color{green}{8}\color{red}{2539682539}\color{green}{6}\color{red}{82539682}\color{green}{5}\color{red}{396}\color{green}{8}\color{red}{253968253}\color{green}{9}\color{red}{682539682539682} \\
  2 & \color{green}{3.1}\color{red}{2}\color{green}{159}\color{red}{4}\color{green}{65}\color{red}{2}\color{green}{5}\color{red}{9101047}\color{green}{8}\color{red}{51318297430}\color{green}{9}\color{red}{49}\color{green}{2}\color{red}{4329217}\color{green}{69}\color{red}{645}\color{green}{37}\color{red}{1316046487107} \\
