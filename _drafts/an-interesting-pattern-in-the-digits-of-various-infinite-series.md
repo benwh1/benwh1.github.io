@@ -65,7 +65,7 @@ This suggests the existence of an asymptotic error formula (an infinite sequence
 
 $$\pi\stackrel{?}{=}\pi_N+\frac{1}{N}-\frac{1}{4N^3}+\frac{5}{16N^5}-\frac{61}{64N^7}+\cdots$$
 
-so we expect some sort of alternating series in odd powers of $$1/N$$. The powers of 2 in the denominators, and the fact that the blocks of incorrect digits differed from the correct digits by multiples of powers of 5, seems to suggest that maybe we should take the number of terms to be 5 times a power of 10, instead of just a power of 10. This has the effect of eliminating the powers of 2 from the denominators, giving the asymptotic formula
+so we expect some sort of alternating series in odd powers of $$1/N$$. The powers of 2 in the denominators, and the fact that the blocks of incorrect digits differed from the correct digits by multiples of powers of 5, seems to suggest that maybe we should *halve* the number of terms we are summing. By replacing $$N$$ with $$N/2$$ in the above formula, we eliminate the powers of 2 from the denominators. This isn't necessary to do of course, it just makes things a bit simpler. Looking at the case where the number of terms is now half of a power of 10, we get the asymptotic formula
 
 $$\pi\stackrel{?}{=}\pi_{5\cdot 10^{N-1}}+\frac{2\cdot 1}{10^{N}}-\frac{2\cdot 1}{10^{3N}}+\frac{2\cdot 5}{10^{5N}}-\frac{2\cdot 61}{10^{7N}}+\cdots$$
 
@@ -87,7 +87,7 @@ $$\begin{array}{c|c}
  \infty & \color{green}{3.141592653589793238462643383279502884197169399375105820974944}
 \end{array}$$
 
-which is quite impressive to look at. The question, then, is what *is* the error series? What are the numbers $$1, 1, 5, 61, \dots$$?
+which is quite impressive to look at. The question, then, is what *is* the error series? What are the numbers $$1, 1, 5, 61, \dots$$ that we see appearing in the numerators?
 
 Exercise for the reader: use the table above to predict the next two terms of the error series, and hence the next two terms of the sequence $$1, 1, 5, 61, \dots$$.
 
@@ -103,7 +103,7 @@ For a simple example, consider $$f(x)=1/(1-x)$$. This function has perhaps the m
 
 $$f(x)=-\frac{1}{x}-\frac{1}{x^2}-\frac{1}{x^3}-\cdots$$
 
-which converges for $$\left\vert 1/x\right\vert\lt 1$$, or $$\left\vert x\right\vert\gt 1$$.
+which converges for $$\left\vert 1/x\right\vert\lt 1$$, or equivalently, for $$\left\vert x\right\vert\gt 1$$.
 
 Our desired asymptotic formula for $$\pi_N$$ looks like a power series at infinity. We can't directly use this fact though, because our function $$\pi_N$$ is only defined when $$N$$ is an integer, so it makes no sense to talk about its derivatives. Ideally, we would like to extend the definition of the series to a "nice" function defined on the reals so that we can use tools from analysis.
 
@@ -188,9 +188,9 @@ There is a lot to be said about this formula and it really deserves a post of it
 
 We will first derive the asymptotic expansion of $$H(x)$$ by using the Euler Maclaurin formula, and then derive the asymptotic expansion of $$H(x-c)$$ from the result, where $$c$$ is an arbitrary constant. By replacing $$x$$ with $$\alpha x$$ and $$c$$ with $$-\beta$$, this is enough to asymptotically expand $$H(\alpha x+\beta)$$, which is our goal.
 
-Before we apply the Euler Maclaurin formula to the generalised harmonic series, there are a few things we can do to clean it up a bit. Let's fix $$a=1$$ and let $$b=N$$. For each fixed $$m$$, the error term $$R_m$$ converges to a constant depending on $$m$$ as we take $$N$$ to infinity, as long as $$f^{(m)}$$ is "well-behaved". Let's rewrite the error term $$R_m$$ as $$C_m+R'_m$$ where $$C_m$$ is the limiting constant and $$R'_m\to 0$$ as $$N\to\infty$$.
+Before we apply the Euler Maclaurin formula to the generalised harmonic series, there are a few things we can do to clean it up a bit. We're interested in a sum from $$n=1$$ up to $$N$$, so let's fix $$a=1$$ and $$b=N$$. For each fixed $$m$$, the error term $$R_m$$ converges to a constant depending on $$m$$ as we take $$N$$ to infinity, as long as $$f^{(m)}$$ is "well-behaved". Let's rewrite the error term $$R_m$$ as $$C_m+R'_m$$ where $$C_m$$ is the limiting constant and $$R'_m\to 0$$ as $$N\to\infty$$.
 
-Now let's use the formula. Let $$x$$ be a real number and $$m$$ be a fixed positive integer. The obvious choice for $$f$$ is to take $$f(t)=1/t-1/(t+x)$$, but this will give us an asymptotic series in terms of powers of $$x+1$$, rather than in powers of $$x$$. Instead, we define $$f(t)=1/t-1/(t+x-1)$$, so that $$\sum_{n=1}^{\infty}f(n)=H(x-1)$$. We can use the fact that $$H(x-1)+1/x=H(x)$$ and add back the extra $$1/x$$ term later. For clarity, denote the error terms by $$C_{m,x}$$ and $$R'_{m,x}$$ to emphasise the fact that they depend on the constant $$x$$.
+Now let's use the formula. Let $$x$$ be a real number and $$m$$ be a fixed positive integer. The obvious choice for $$f$$ is to take $$f(t)=1/t-1/(t+x)$$, but it turns out that this will give us an asymptotic series in terms of powers of $$x+1$$, rather than in powers of $$x$$. Instead, we define $$f(t)=1/t-1/(t+x-1)$$, so that $$\sum_{n=1}^{\infty}f(n)=H(x-1)$$. We can use the fact that $$H(x-1)+1/x=H(x)$$ and add back the extra $$1/x$$ term later. For clarity, denote the error terms by $$C_{m,x}$$ and $$R'_{m,x}$$ to emphasise the fact that they depend on the constant $$x$$.
 
 Using the fact that
 
@@ -210,17 +210,17 @@ $$\begin{aligned}
 &+C_{m,x}+\color{red}{R'_{m,x}} \\
 \end{aligned}$$
 
-Taking $$N\to\infty$$ eliminates all of the terms in red, simplifying the formula significantly. Also, it turns out that the *odd* Bernoulli numbers $$B_3, B_5, \dots$$ are all zero, so the $$(-1)^n$$ term inside the sum has no effect and can be removed. Let's also add back the $$1/x$$ term from earlier. The resulting formula is
+Taking $$N\to\infty$$ eliminates all of the terms in red, simplifying the formula significantly. Also, it turns out that the *odd* Bernoulli numbers $$B_3, B_5, \dots$$ are all zero, so the $$(-1)^n$$ term inside the sum has no effect and can be removed. Let's also add back the $$1/x$$ term from earlier. The resulting formula looks like this:
 
 $$H(x)=\log(x)+\frac{1}{2}+\frac{1}{2x}+\sum_{n=2}^{m}\frac{B_n}{n}\left(1-\frac{1}{x^n}\right)+C_{m,x}$$
 
-To obtain the final asymptotic formula for $$H(x)$$, subtract $$\log(x)$$ and consider what happens as $$x\to\infty$$. Of course, the terms containing negative powers of $$x$$ go to zero. It turns out that $$H(x)-\log(x)$$ converges to a constant, denoted by $$\gamma$$, and that $$C_{m,x}$$ also converges to a constant $$C_m$$ depending on $$m$$. So we have
+To obtain the final asymptotic formula for $$H(x)$$, subtract $$\log(x)$$ and consider what happens as $$x\to\infty$$. The $$1/x^n$$ term inside the sum will go to zero. It turns out that $$H(x)-\log(x)$$ converges to a constant, denoted by $$\gamma$$, and that $$C_{m,x}$$ also converges to a constant $$C_m$$ depending on $$m$$. So we have
 
 $$\lim_{x\to\infty}H(x)-\log(x)=\gamma=\frac{1}{2}+\sum_{n=2}^{m}\frac{B_n}{n}+C_m$$
 
 Exercise for the reader: show that $$\lim_{x\to\infty}H(x)-\log(x)$$ exists.
 
-This shows that the right hand side is actually independent of $$m$$, completing the derivation of the asymptotic formula:
+This shows that the right hand side is actually independent of $$m$$ (because it is always equal to $$\gamma$$), which completes the derivation of the asymptotic formula:
 
 $$\begin{aligned}
 H(x)&\sim\log(x)+\gamma+\frac{1}{2x}-\sum_{n=2}^{\infty}\frac{B_n}{nx^n} \\
@@ -229,7 +229,7 @@ H(x)&\sim\log(x)+\gamma+\frac{1}{2x}-\sum_{n=2}^{\infty}\frac{B_n}{nx^n} \\
 
 It is very important to emphasize that this is only an *asymptotic series*. The infinite sum above does *not* converge! If we truncate the series after $$m$$ terms, then the formula gets closer to $$H(x)$$ as we take $$x$$ to infinity, but diverges as we take $$m$$ to infinity.
 
-We can now calculate the asymptotic formula for $$H(x-c)$$.
+We can now calculate the asymptotic formula for $$H(x-c)$$. This formula looks much the same as the formula above, but uses the Bernoulli *polynomials* rather than the Bernoulli numbers. The Bernoulli numbers are simply the values of the Bernoulli polynomials at zero.
 
 $$\begin{aligned}
 H(x-c)&\sim\color{red}{\log(x-c)}+\gamma-\sum_{n=1}^{\infty}\frac{B_n}{n\color{green}{(x-c)^{n}}} \\
@@ -240,8 +240,8 @@ H(x-c)&\sim\color{red}{\log(x-c)}+\gamma-\sum_{n=1}^{\infty}\frac{B_n}{n\color{g
 Next, we sum over diagonals by making the substitution $$n+k=d$$.
 
 $$\begin{aligned}
-H(x-c)&\sim\log(x)-\sum_{n=1}^{\infty}\frac{c^n}{nx^n}+\gamma-\sum_{d=1}^{\infty}\sum_{i=0}^{d-1}B_{d-i}\binom{d}{i}c^i \frac{1}{dx^d} \\
-&= \log(x)+\gamma-\sum_{d=1}^{\infty}\underbrace{\left[c^d+\sum_{i=0}^{d-1}B_{d-i}\binom{d}{i}c^i\right]}_{\text{Bernoulli polynomial }B_d(c)}\frac{1}{dx^d} \\
+H(x-c)&\sim\log(x)-\color{red}{\sum_{n=1}^{\infty}}\frac{c^n}{\color{red}{nx^n}}+\gamma-\color{red}{\sum_{d=1}^{\infty}}\sum_{i=0}^{d-1}B_{d-i}\binom{d}{i}c^i \color{red}{\frac{1}{dx^d}} \\
+&= \log(x)+\gamma-\color{red}{\sum_{d=1}^{\infty}}\underbrace{\left[c^d+\sum_{i=0}^{d-1}B_{d-i}\binom{d}{i}c^i\right]}_{\text{Bernoulli polynomial }B_d(c)}\color{red}{\frac{1}{dx^d}} \\
 &= \log(x)+\gamma-\sum_{n=1}^{\infty}\frac{B_n(c)}{nx^n} \\
 \end{aligned}$$
 
