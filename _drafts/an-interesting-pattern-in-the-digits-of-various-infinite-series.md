@@ -12,10 +12,10 @@ $$\pi=\sum_{n=1}^{\infty}(-1)^{n+1}\frac{4}{2n-1}=\frac{4}{1}-\frac{4}{3}+\frac{
 
 Unfortunately, while this formula is very simple and easy to remember, it converges extremely slowly. Let $$a_n=4/(2n-1)$$ and let $$\pi_N$$ be the above series truncated after $$N$$ terms. Then by the alternating series test, we have $$\left\vert\pi_N-\pi\right\vert\leq a_{N+1}\sim 2/N$$ as an upper bound for the error. This estimate for the error turns out to be of the correct order, which implies that if we want to calculate $$d$$ digits of $$\pi$$, we need to take $$N$$ to be exponential in $$d$$.
 
-Let's make a table of $$\pi_{10^N}$$ for various values of $$N$$, so we can see just how slowly the sum converges.
+Let's make a table of $$\pi_{10^k}$$ for various values of $$k$$, so we can see just how slowly the sum converges.
 
 $$\begin{array}{c|c}
- N & \pi_{10^N} \\
+ k & \pi_{10^k} \\
  \hline
  0 & 4.000000000000000000000000000000 \\
  1 & \color{green}{3}.041839618929402211135957265988 \\
@@ -38,7 +38,7 @@ However, looking at this table, there is clearly something more interesting goin
 Let's rewrite the table but with greater precision, and let's highlight all of the correct and incorrect digits.
 
 $$\begin{array}{c|c}
- N & \pi_{10^N} \\
+ k & \pi_{10^k} \\
  \hline
  0 & \color{red}{4.0000000000000000000000000000000}\color{green}{0}\color{red}{00000000000000000}\color{green}{0}\color{red}{000}\color{green}{0}\color{red}{000000} \\
  1 & \color{green}{3.}\color{red}{0}\color{green}{41}\color{red}{839}\color{green}{6}\color{red}{1892}\color{green}{9}\color{red}{402}\color{green}{2}\color{red}{1113595726598822574054}\color{green}{7}\color{red}{7219718}\color{green}{7}\color{red}{057868172}\color{green}{4}\color{red}{192} \\
@@ -54,11 +54,11 @@ $$\begin{array}{c|c}
  \infty & \color{green}{3.141592653589793238462643383279502884197169399375105820974944}
 \end{array}$$
 
-The pattern of correct and incorrect digits in $$\pi_{10^N}$$ really stands out as $$N$$ increases. We can pick out the following patterns quite clearly:
-- the first incorrect digit appears after $$N$$ correct digits, and is always $$1$$ too low
-- the second block of incorrect digits appears after roughly $$3N$$ digits, and is always $$25=5^2$$ too high
-- the third block of incorrect digits appears after roughly $$5N$$ digits, and is always $$3125=5^5$$ too low
-- the fourth block of incorrect digits appears after roughly $$7N$$ digits, and is always $$953125=5^6\cdot 61$$ too high
+The pattern of correct and incorrect digits in $$\pi_{10^k}$$ really stands out as $$k$$ increases. We can pick out the following patterns quite clearly:
+- the first incorrect digit appears after $$k$$ correct digits, and is always $$1$$ too low
+- the second block of incorrect digits appears after roughly $$3k$$ digits, and is always $$25=5^2$$ too high
+- the third block of incorrect digits appears after roughly $$5k$$ digits, and is always $$3125=5^5$$ too low
+- the fourth block of incorrect digits appears after roughly $$7k$$ digits, and is always $$953125=5^6\cdot 61$$ too high
 - ...
 
 This suggests the existence of an asymptotic error formula (an infinite sequence of "correction" terms) that can be added to $$\pi_N$$ to yield approximations with a much smaller error. Moreover, with a bit of experimentation, the patterns we noticed above seem to suggest that this asymptotic series begins
@@ -67,12 +67,12 @@ $$\pi\stackrel{?}{=}\pi_N+\frac{1}{N}-\frac{1}{4N^3}+\frac{5}{16N^5}-\frac{61}{6
 
 so we expect some sort of alternating series in odd powers of $$1/N$$. The powers of 2 in the denominators, and the fact that the blocks of incorrect digits differed from the correct digits by multiples of powers of 5, seems to suggest that maybe we should *halve* the number of terms we are summing. By replacing $$N$$ with $$N/2$$ in the above formula, we eliminate the powers of 2 from the denominators. This isn't necessary to do of course, it just makes things a bit simpler. Looking at the case where the number of terms is now half of a power of 10, we get the asymptotic formula
 
-$$\pi\stackrel{?}{=}\pi_{5\cdot 10^{N-1}}+\frac{2\cdot 1}{10^{N}}-\frac{2\cdot 1}{10^{3N}}+\frac{2\cdot 5}{10^{5N}}-\frac{2\cdot 61}{10^{7N}}+\cdots$$
+$$\pi\stackrel{?}{=}\pi_{5\cdot 10^{k-1}}+\frac{2\cdot 1}{10^{k}}-\frac{2\cdot 1}{10^{3k}}+\frac{2\cdot 5}{10^{5k}}-\frac{2\cdot 61}{10^{7k}}+\cdots$$
 
 resulting in approximations with smaller blocks of incorrect digits:
 
 $$\begin{array}{c|c}
- N & \pi_{5\cdot 10^{N-1}} \\
+ k & \pi_{5\cdot 10^{k-1}} \\
  \hline
  1 & \color{green}{3.}\color{red}{33968}\color{green}{2}\color{red}{5396}\color{green}{8}\color{red}{2539682539}\color{green}{6}\color{red}{82539682}\color{green}{5}\color{red}{396}\color{green}{8}\color{red}{253968253}\color{green}{9}\color{red}{682539682539682} \\
  2 & \color{green}{3.1}\color{red}{2}\color{green}{159}\color{red}{4}\color{green}{65}\color{red}{2}\color{green}{5}\color{red}{9101047}\color{green}{8}\color{red}{51318297430}\color{green}{9}\color{red}{49}\color{green}{2}\color{red}{4329217}\color{green}{69}\color{red}{645}\color{green}{37}\color{red}{1316046487107} \\
