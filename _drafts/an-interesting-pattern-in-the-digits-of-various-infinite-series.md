@@ -87,7 +87,17 @@ $$\begin{array}{c|c}
  \infty & \color{green}{3.141592653589793238462643383279502884197169399375105820974944}
 \end{array}$$
 
-which is quite impressive to look at. The question, then, is what *is* the error series? What are the numbers $$1, 1, 5, 61, \dots$$ that we see appearing in the numerators?
+which is quite impressive to look at.
+
+Think about what this conjecture actually implies - if we sum the Leibniz series to $$N$$ terms, we get a pretty bad approximation for $$\pi$$, even if $$N$$ is reasonably large. However, adding a single extra fraction, $$1/N$$, should roughly *triple* the precision of the approximation! This is because the error in our approximation goes from being roughly
+
+$$\left|\pi-\pi_N\right|\approx\frac{1}{N}$$
+
+to being roughly
+
+$$\left|\pi-\left(\pi_N+\frac{1}{N}\right)\right|\approx\frac{1}{N^3}$$
+
+The question, then, is what *is* the error series? What are the numbers $$1, 1, 5, 61, \dots$$ that we see appearing in the numerators? How can we calculate them?
 
 Exercise for the reader: use the table above to predict the next two terms of the error series, and hence the next two terms of the sequence $$1, 1, 5, 61, \dots$$.
 
