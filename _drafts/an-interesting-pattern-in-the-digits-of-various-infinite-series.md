@@ -272,15 +272,15 @@ $$\boxed{H(\alpha x+\beta)\sim\log(x)+\log(\alpha)+\gamma-\sum_{n=1}^{\infty}\fr
 All that remains now is calculation. We have
 
 $$\begin{aligned}
-\pi_N&\sim\pi+\left(\log(N/2)+\gamma-\sum_{k=1}^{\infty}\frac{B_k(1/4)}{k2^{-k}N^k}\right)-\left(\log(N/2)+\gamma-\sum_{k=1}^{\infty}\frac{B_k(3/4)}{k2^{-k}N^k}\right) \\
-&=\pi-\sum_{k=1}^{\infty}\frac{B_k(1/4)-B_k(3/4)}{k2^{-k}N^k} \\
-&=\pi+\frac{1}{N}-\frac{1}{4N^3}+\frac{5}{16N^5}-\frac{61}{64N^7}+\frac{1385}{256N^9}-\frac{50521}{1024N^{11}}+\frac{2702765}{4096N^{13}}-\cdots
+\pi&\sim\pi_N+\left(\log(N/2)+\gamma-\sum_{k=1}^{\infty}\frac{B_k(1/4)}{k2^{-k}N^k}\right)-\left(\log(N/2)+\gamma-\sum_{k=1}^{\infty}\frac{B_k(3/4)}{k2^{-k}N^k}\right) \\
+&=\pi_N-\sum_{k=1}^{\infty}\frac{B_k(1/4)-B_k(3/4)}{k2^{-k}N^k} \\
+&=\pi_N+\frac{1}{N}-\frac{1}{4N^3}+\frac{5}{16N^5}-\frac{61}{64N^7}+\frac{1385}{256N^9}-\frac{50521}{1024N^{11}}+\frac{2702765}{4096N^{13}}-\cdots
 \end{aligned}$$
 
 or replacing $$N$$ with $$N/2$$ as before,
 
 $$\begin{aligned}
-\pi_{N/2}\sim\pi+\frac{2\cdot 1}{N}-\frac{2\cdot 1}{N^3}+\frac{2\cdot 5}{N^5}-\frac{2\cdot 61}{N^7}+\frac{2\cdot 1385}{N^9}-\frac{2\cdot 50521}{N^{11}}+\frac{2\cdot 2702765}{N^{13}}-\cdots
+\pi\sim\pi_{N/2}+2\left(\frac{1}{N}-\frac{1}{N^3}+\frac{5}{N^5}-\frac{61}{N^7}+\frac{1385}{N^9}-\frac{50521}{N^{11}}+\frac{2702765}{N^{13}}-\cdots\right)
 \end{aligned}$$
 
 which is exactly what we predicted.
