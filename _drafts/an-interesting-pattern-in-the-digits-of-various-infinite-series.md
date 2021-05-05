@@ -107,7 +107,7 @@ $$\left|\pi-\left(\pi_N+\frac{1}{N}\right)\right|\approx\frac{1}{N^3}$$
 
 The question, then, is what *is* the error series? What are the numbers $$1, 1, 5, 61, \dots$$ that we see appearing in the numerators? How can we calculate them?
 
-Exercise for the reader: use the table above to predict the next two terms of the error series, and hence the next two terms of the sequence $$1, 1, 5, 61, \dots$$.
+Exercise for the reader: use the table above to predict the next two terms of the error series, and hence the next two terms of the sequence $$1, 1, 5, 61, \dots$$. Calculate $$\pi_8$$ and add on the first 6 correction terms of the asymptotic series. How close is the result to $$\pi$$? Approximately how many terms would you have needed to achieve the same precision *without* the asymptotic series?
 
 ## **Generalised Harmonic Numbers**
 
