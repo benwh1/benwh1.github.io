@@ -236,7 +236,7 @@ To obtain the final asymptotic formula for $$H(x)$$, subtract $$\log(x)$$ and co
 
 $$\lim_{x\to\infty}H(x)-\log(x)=\gamma=\frac{1}{2}+\sum_{n=2}^{m}\frac{B_n}{n}+C_m$$
 
-Exercise for the reader: show that $$\lim_{x\to\infty}H(x)-\log(x)$$ exists.
+Exercise for the reader: show that $$\lim_{x\to\infty}H(x)-\log(x)$$ exists. Hint: use the fact that $$H(x)$$ is increasing to reduce to the case of integer $$x$$, and then show that $$H_n-\log(n)$$ converges by writing $$\log(n)$$ as a telescoping series.
 
 This shows that the right hand side is actually independent of $$m$$ (because it is always equal to $$\gamma$$), which completes the derivation of the asymptotic formula:
 
