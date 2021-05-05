@@ -267,7 +267,7 @@ So finally, we have
 
 $$\boxed{H(\alpha x+\beta)\sim\log(x)+\log(\alpha)+\gamma-\sum_{n=1}^{\infty}\frac{B_n(-\beta)}{n\alpha^n x^n}}$$
 
-## **Leibniz formula error series**
+## **Putting it all together**
 
 All that remains now is calculation. We have
 
@@ -283,5 +283,43 @@ $$\begin{aligned}
 \pi_{N/2}\sim\pi+\frac{2\cdot 1}{N}-\frac{2\cdot 1}{N^3}+\frac{2\cdot 5}{N^5}-\frac{2\cdot 61}{N^7}+\frac{2\cdot 1385}{N^9}-\frac{2\cdot 50521}{N^{11}}+\frac{2\cdot 2702765}{N^{13}}-\cdots
 \end{aligned}$$
 
+which is exactly what we predicted.
+
+We can also apply our general asymptotic formula for $$H(\alpha x+\beta)$$ to other harmonic-like series. Another well-known series is
+
+$$\log(2)=\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n}=\frac{1}{1}-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\cdots$$
+
+Letting $$L_N$$ denote the sum of the first $$N$$ terms, we get the following table of values. As expected, we see a similar pattern of correct and incorrect digits as we do for the Leibniz series.
+
+$$\begin{array}{c|c}
+ k & L_{10^k/2} \\
+ \hline
+ 1 & \color{red}{0.78}\color{green}{3}\color{red}{333333333333}\color{green}{3}\color{red}{333333}\color{green}{3}\color{red}{33333333333333333333}\color{green}{3}\color{red}{3}\color{green}{3}\color{red}{33333333333333} \\
+ 2 & \color{green}{0.6}\color{red}{8}\color{green}{3}\color{red}{2}\color{green}{471}\color{red}{6}\color{green}{05}\color{red}{75}\color{green}{9}\color{red}{18188}\color{green}{4}\color{red}{25658}\color{green}{1}\color{red}{16}\color{green}{4}\color{red}{90034601352412}\color{green}{1}\color{red}{8841343}\color{green}{5}\color{red}{4}\color{green}{5}\color{red}{1572}\color{green}{68}\color{red}{2} \\
+ 3 & \color{green}{0.69}\color{red}{2}\color{green}{14}\color{red}{8}\color{green}{18055}\color{red}{7}\color{green}{9453}\color{red}{25}\color{green}{41}\color{red}{6960}\color{green}{12}\color{red}{939382279}\color{green}{8}\color{red}{441852586884514}\color{green}{2}\color{red}{9549}\color{green}{0}\color{red}{724} \\
+ 4 & \color{green}{0.693}\color{red}{0}\color{green}{471}\color{red}{9}\color{green}{0559945}\color{red}{1}\color{green}{094172}\color{red}{48}\color{green}{12145}\color{red}{545}\color{green}{6568}\color{red}{8690997805}\color{green}{6}\color{red}{847893649}\color{green}{0}\color{red}{304} \\
+ 5 & \color{green}{0.6931}\color{red}{3}\color{green}{7180}\color{red}{6}\color{green}{59945309}\color{red}{39}\color{green}{72321214}\color{red}{74}\color{green}{1765680}\color{red}{483}\color{green}{00134}\color{red}{43961}\color{green}{525}\color{red}{37668}\color{green}{8}\color{red}{8} \\
+ 6 & \color{green}{0.69314}\color{red}{6}\color{green}{1805}\color{red}{60}\color{green}{94530941723}\color{red}{0}\color{green}{1214581765}\color{red}{84}\color{green}{075500134}\color{red}{088}\color{green}{25525412}\color{red}{8}\color{green}{6}\color{red}{16} \\
+ 7 & \color{green}{0.693147}\color{red}{0}\color{green}{805599}\color{red}{5}\color{green}{5309417232121}\color{red}{2}\color{green}{581765680755}\color{red}{16}\color{green}{13436025525}\color{red}{140}\color{green}{0680} \\
+ 8 & \color{green}{0.6931471}\color{red}{7}\color{green}{0559945}\color{red}{4}\color{green}{094172321214581}\color{red}{5}\color{green}{65680755001343}\color{red}{76}\color{green}{2552541206}\color{red}{79} \\
+ 9 & \color{green}{0.6931471}\color{red}{79}\color{green}{5599453}\color{red}{10}\color{green}{41723212145817656}\color{red}{6}\color{green}{0755001343602552}\color{red}{70}\color{green}{120680} \\
+ \hline
+ \infty & \color{green}{0.693147180559945309417232121458176568075500134360255254120680}
+\end{array}$$
+
+This suggests the asymptotic formula should begin
+
+$$\log(2)\sim L_{N/2}+\frac{1}{N}-\frac{1}{N^2}+\frac{2}{N^4}-\frac{16}{N^6}+\frac{272}{N^8}-\frac{7936}{N^{10}}+\cdots$$
+
+and indeed, using the formula
+
+$$\log(2)-L_N=\frac{1}{2}\left(H\left(\frac{N}{2}\right)-H\left(\frac{N-1}{2}\right)\right)$$
+
+we get the asymptotic series
+
+$$\begin{aligned}
+\log(2)&\sim L_{N/2}+\sum_{k=1}^{\infty}\frac{2^{2k-1}(B_k(1/2)-B_k)}{kN^k} \\
+&=L_{N/2}+\frac{1}{N}-\frac{1}{N^2}+\frac{2}{N^4}-\frac{16}{N^6}+\frac{272}{N^8}-\frac{7936}{N^{10}}+\frac{353792}{N^{12}}-\cdots
+\end{aligned}$$
 
 [1]: https://en.wikipedia.org/wiki/Chudnovsky_algorithm
