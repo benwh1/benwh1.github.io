@@ -155,7 +155,7 @@ $$\begin{aligned}
 &= \frac{1}{a}\left(H\left(\frac{b}{a}+n\right)-H\left(\frac{b}{a}\right)\right)
 \end{aligned}$$
 
-Exercise for the reader: use this formula or perform a similar calculation to verify the following equations (when $$N$$ is even).
+Exercise for the reader: use this formula or perform a similar calculation to verify the following equations.
 
 $$\pi_N=\left[H\left(\frac{N}{2}-\frac{3}{4}\right)-H\left(-\frac{3}{4}\right)\right]-\left[H\left(\frac{N}{2}-\frac{1}{4}\right)-H\left(-\frac{1}{4}\right)\right]$$
 
