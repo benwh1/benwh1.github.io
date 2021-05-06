@@ -137,7 +137,9 @@ If we wish to generalise this to a function taking a real number as input, then 
 
 $$\begin{aligned}
 H_n &= \color{green}{1+\frac{1}{2}+\cdots+\frac{1}{n}} \\
-&= \left(\color{green}{1}\color{red}{-\frac{1}{n+1}}\right)+\left(\color{green}{\frac{1}{2}}\color{blue}{-\frac{1}{n+2}}\right)+\cdots+\left(\color{green}{\frac{1}{n}}-\frac{1}{2n}\right)+\left(\color{red}{\frac{1}{n+1}}-\frac{1}{2n+1}\right)+\left(\color{blue}{\frac{1}{n+2}}-\frac{1}{2n+2}\right)+\cdots \\
+&= \left(\color{green}{1}\color{red}{-\frac{1}{n+1}}\right)+\left(\color{green}{\frac{1}{2}}\color{blue}{-\frac{1}{n+2}}\right)+\cdots+\left(\color{green}{\frac{1}{n}}\color{orange}{-\frac{1}{2n}}\right) \\
+&+\left(\color{red}{\frac{1}{n+1}}-\frac{1}{2n+1}\right)+\left(\color{blue}{\frac{1}{n+2}}-\frac{1}{2n+2}\right)+\cdots+\left(\color{orange}{\frac{1}{2n}}-\frac{1}{3n}\right) \\
+&+\cdots \\
 &= \sum_{k=1}^{\infty}\left(\frac{1}{k}-\frac{1}{k+n}\right)
 \end{aligned}$$
 
