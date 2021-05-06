@@ -253,7 +253,9 @@ H(x)&\sim\log(x)+\gamma+\frac{1}{2x}-\sum_{n=2}^{\infty}\frac{B_n}{nx^n} \\
 &=\log(x)+\gamma-\sum_{n=1}^{\infty}\frac{B_n}{nx^n}
 \end{aligned}$$
 
-It is very important to emphasize that this is only an *asymptotic series*. The infinite sum above does *not* converge! If we truncate the series after $$m$$ terms, then the formula gets closer to $$H(x)$$ as we take $$x$$ to infinity, but diverges as we take $$m$$ to infinity.
+which is surprisingly short, compared to the long Euler Maclaurin formula that we started with.
+
+It is very important to emphasize that this is only an *asymptotic series*, which we denote with the symbol $$\sim$$. The infinite sum above does *not* converge for even a single value of $$x$$! To be clear, what we mean by the formula is this: suppose we truncate the sum after $$m$$ terms. If we fix $$m$$ and take $$x$$ to be larger and larger, then the sum will get closer and closer to the true value of $$H(x)$$. However, if we fix $$x$$ and take $$m$$ larger and larger, the sum will diverge.
 
 We can now calculate the asymptotic formula for $$H(x-c)$$. This formula looks much the same as the formula above, but uses the Bernoulli *polynomials* rather than the Bernoulli numbers. The Bernoulli numbers are simply the values of the Bernoulli polynomials at zero.
 
@@ -293,7 +295,9 @@ $$\begin{aligned}
 
 which is exactly what we predicted.
 
-We can also apply our general asymptotic formula for $$H(\alpha x+\beta)$$ to other harmonic-like series. Another well-known series is
+Again, to be very clear about the meaning of this formula: if we choose a fixed value of $$N$$ and add more and more terms of the above asymptotic series, the sum will *not* converge to $$\pi$$, it will *diverge*. However, if we truncate the series after finitely many terms, say after the term $$-50521/N^{11}$$ and subsitute in larger and larger values of $$N$$, then the result will converge to $$\pi$$, with an error term proportional to $$1/N^{13}$$.
+
+We can also apply our general asymptotic formula for $$H(\alpha x+\beta)$$ to other harmonic-like series. Another well-known example is
 
 $$\log(2)=\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n}=\frac{1}{1}-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\cdots$$
 
