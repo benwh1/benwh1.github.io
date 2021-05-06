@@ -200,11 +200,15 @@ $$\begin{array}{c|ccccccccccccccccc}
  B_n & 1 & -\frac{1}{2} & \frac{1}{6} & 0 & -\frac{1}{30} & 0 & \frac{1}{42} & 0 & -\frac{1}{30} & 0 & \frac{5}{66} & 0 & -\frac{691}{2730} & 0 & \frac{7}{6} \\
 \end{array}$$
 
-This is the Euler Maclaurin formula. Although we are currently interpreting it as a general formula for numerical integration, its main use actually comes when we use the formula *in reverse*, to approximate sums by integrals, and this is how the formula is usually presented.
+and in general, they can be defined recursively by
+
+$$B_0=1;\,\, B_n=-\sum_{k=0}^{n-1}\binom{n}{k}\frac{B_k}{n-k+1}$$
+
+This is the [Euler Maclaurin formula][3]. Although we are currently interpreting it as a general formula for numerical integration, its main use actually comes when we use the formula *in reverse*, to approximate sums by integrals. This is how the formula is usually presented, as the Euler Maclaurin *summation* formula.
 
 $$\sum_{n=a}^{b}f(n)=\int_a^b f(x)dx+\frac{f(a)+f(b)}{2}+\sum_{n=2}^{m}\frac{B_n}{n!}\left(f^{(n-1)}(b)-f^{(n-1)}(a)\right)+R_{m}$$
 
-There is a lot to be said about this formula and it really deserves a post of its own to explain all of the details we will use, which I plan to write in the near future. For now, we will just use the formula.
+One way to derive this formula is to split up the integral into a sum of integrals over intervals of length 1, and then use repeated integration by parts in a clever way. For another (informal) derivation using power sum identities, see Mathologer's video on power sums [here][2].
 
 ## **Asymptotic expansion of the Harmonic Numbers**
 
@@ -327,3 +331,5 @@ $$\begin{aligned}
 \end{aligned}$$
 
 [1]: https://en.wikipedia.org/wiki/Chudnovsky_algorithm
+[2]: https://www.youtube.com/watch?v=fw1kRz83Fj0
+[3]: https://en.wikipedia.org/wiki/Euler%E2%80%93Maclaurin_formula
