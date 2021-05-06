@@ -1,6 +1,6 @@
 ---
 layout: post
-title: An interesting pattern in the digits of various infinite series
+title: An interesting pattern in the Leibniz series
 ---
 {% include mathjax.html %}
 
