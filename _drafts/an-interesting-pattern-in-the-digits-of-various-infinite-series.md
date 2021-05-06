@@ -184,7 +184,7 @@ $$\begin{aligned}
 
 The error in this approximation is proportional to the second derivative of $$f$$, so the trapezium rule gives a *first order* approximation of the integral. Notice also that this is just the rectangle approximation formula with an extra term added on. Naturally, we can ask if there are more terms that can be added on to get higher order approximations.
 
-The answer to this question is *yes*, there are approximation formulas like these of all degrees, and we can write even down a formula for all of them. For simplicity, let's take $$h=1$$ and $$a,b$$ to be integers. Then we have
+The answer to this question is *yes*, there are approximation formulas like these of all orders, and we can even write down a formula for all of them. For simplicity, let's take $$h=1$$, and $$a$$ and $$b$$ to be integers. Then we have
 
 $$\int_a^b f(x)dx=
 \underbrace{\sum_{n=a}^{b}f(n)}_{\text{Rectangles}}
@@ -192,7 +192,7 @@ $$\int_a^b f(x)dx=
 -\underbrace{\sum_{n=2}^{m}\frac{B_n}{n!}\left(f^{(n-1)}(b)-f^{(n-1)}(a)\right)}_{\text{Higher order correction terms}}
 -\underbrace{R_{m}}_{\text{Error term}}$$
 
-where $$m$$ is the order of the approximation and $$B_n$$ are constants known as the *Bernoulli numbers*, the first few of which are listed in the table below.
+where $$m$$ is the order of the approximation and $$B_n$$ are constants known as the *Bernoulli numbers*, the first few of which are listed in the table below
 
 $$\begin{array}{c|ccccccccccccccccc}
  n & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 \\
@@ -216,11 +216,11 @@ We will first derive the asymptotic expansion of $$H(x)$$ by using the Euler Mac
 
 Before we apply the Euler Maclaurin formula to the generalised harmonic series, there are a few things we can do to clean it up a bit. We're interested in a sum from $$n=1$$ up to $$N$$, so let's fix $$a=1$$ and $$b=N$$. For each fixed $$m$$, the error term $$R_m$$ converges to a constant depending on $$m$$ as we take $$N$$ to infinity, as long as $$f^{(m)}$$ is "well-behaved". Let's rewrite the error term $$R_m$$ as $$C_m+R'_m$$ where $$C_m$$ is the limiting constant and $$R'_m\to 0$$ as $$N\to\infty$$.
 
-Now let's use the formula. Let $$x$$ be a real number and $$m$$ be a fixed positive integer. The obvious choice for $$f$$ is to take $$f(t)=1/t-1/(t+x)$$, but it turns out that this will give us an asymptotic series in terms of powers of $$x+1$$, rather than in powers of $$x$$. Instead, we define $$f(t)=1/t-1/(t+x-1)$$, so that $$\sum_{n=1}^{\infty}f(n)=H(x-1)$$. We can use the fact that $$H(x-1)+1/x=H(x)$$ and add back the extra $$1/x$$ term later. For clarity, denote the error terms by $$C_{m,x}$$ and $$R'_{m,x}$$ to emphasise the fact that they depend on the constant $$x$$.
+Now let's use the formula. Let $$x$$ be a real number and $$m$$ be a fixed positive integer. The obvious choice for $$f$$ is to take $$f(t)=1/t-1/(t+x)$$, but it turns out that this will give us an asymptotic series in terms of powers of $$x+1$$, rather than in powers of $$x$$ (why?). Instead, we define $$f(t)=1/t-1/(t+x-1)$$, so that $$\sum_{n=1}^{\infty}f(n)=H(x-1)$$. We can use the fact that $$H(x-1)+1/x=H(x)$$ and add back the extra $$1/x$$ term later. For clarity, denote the error terms by $$C_{m,x}$$ and $$R'_{m,x}$$ to emphasise the fact that they depend on the constant $$x$$.
 
 Using the fact that
 
-$$f^{(r)}(t)=(-1)^{r}r!\left(\frac{1}{t^{r+1}}-\frac{1}{(t+x-1)^{r+1}}\right),$$
+$$f^{(r)}(t)=(-1)^{r}r!\left(\frac{1}{t^{r+1}}-\frac{1}{(t+x-1)^{r+1}}\right)$$
 
 the Euler Maclaurin formula now says that
 
@@ -269,7 +269,7 @@ Next, we sum over diagonals by making the substitution $$n+k=d$$.
 
 $$\begin{aligned}
 H(x-c)&\sim\log(x)-\color{red}{\sum_{n=1}^{\infty}}\frac{c^n}{\color{red}{nx^n}}+\gamma-\color{red}{\sum_{d=1}^{\infty}}\sum_{i=0}^{d-1}B_{d-i}\binom{d}{i}c^i \color{red}{\frac{1}{dx^d}} \\
-&= \log(x)+\gamma-\color{red}{\sum_{d=1}^{\infty}}\underbrace{\left[c^d+\sum_{i=0}^{d-1}B_{d-i}\binom{d}{i}c^i\right]}_{\text{Bernoulli polynomial }B_d(c)}\color{red}{\frac{1}{dx^d}} \\
+&= \log(x)+\gamma-\color{red}{\sum_{n=1}^{\infty}}\underbrace{\left[c^n+\sum_{i=0}^{n-1}B_{n-i}\binom{n}{i}c^i\right]}_{\text{Bernoulli polynomial }B_n(c)}\color{red}{\frac{1}{nx^n}} \\
 &= \log(x)+\gamma-\sum_{n=1}^{\infty}\frac{B_n(c)}{nx^n} \\
 \end{aligned}$$
 
@@ -333,6 +333,8 @@ $$\begin{aligned}
 \log(2)&\sim L_{N/2}+\sum_{k=1}^{\infty}\frac{2^{2k-1}(B_k(1/2)-B_k)}{kN^k} \\
 &=L_{N/2}+\frac{1}{N}-\frac{1}{N^2}+\frac{2}{N^4}-\frac{16}{N^6}+\frac{272}{N^8}-\frac{7936}{N^{10}}+\frac{353792}{N^{12}}-\cdots
 \end{aligned}$$
+
+as expected.
 
 [1]: https://en.wikipedia.org/wiki/Chudnovsky_algorithm
 [2]: https://www.youtube.com/watch?v=fw1kRz83Fj0
