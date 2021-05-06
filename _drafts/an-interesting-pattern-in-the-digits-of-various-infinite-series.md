@@ -73,6 +73,8 @@ All of the powers of 2 in the denominators seem to suggest that maybe we should 
 
 $$\pi\stackrel{?}{=}\pi_{N/2}+2\left(\frac{1}{N}-\frac{1}{N^3}+\frac{5}{N^5}-\frac{61}{N^7}+\cdots\right)$$
 
+(Note: this form of the series now requires $$N/2$$ to be even, i.e. that $$N$$ be a multiple of 4.)
+
 Or, taking $$N=10^k$$ as before,
 
 $$\pi\stackrel{?}{=}\pi_{10^k/2}+2\left(\frac{1}{10^k}-\frac{1}{10^{3k}}+\frac{5}{10^{5k}}-\frac{61}{10^{7k}}+\cdots\right)$$
