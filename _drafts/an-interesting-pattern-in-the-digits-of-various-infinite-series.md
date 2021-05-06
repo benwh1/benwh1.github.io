@@ -171,7 +171,7 @@ In introductory calculus, we learn that the area under a curve can be defined by
 
 $$\int_a^b f(x)dx\approx h\left(f(x_0)+\cdots+f(x_n)\right)$$
 
-where $$h=(b-a)/n$$ and $$x_i=a+ih$$. This approximation is usually pretty bad. The error turns out to be proportional to the derivative of $$f$$ (for fixed $$a,b,n$$), so this is a *zeroth order* approximation.
+where $$h=(b-a)/n$$ and $$x_k=a+kh$$. This approximation is usually pretty bad. The error turns out to be proportional to the derivative of $$f$$ (for fixed $$a,b,n$$), so this is a *zeroth order* approximation.
 
 A better approximation is the trapezium rule, which as the name suggests, uses trapeziums instead of rectangles to approximate the area
 
