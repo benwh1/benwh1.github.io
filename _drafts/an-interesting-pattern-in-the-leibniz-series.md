@@ -10,7 +10,7 @@ Perhaps the most well-known infinite series for $$\pi$$ is the Leibniz formula
 
 $$\pi=\sum_{n=1}^{\infty}(-1)^{n+1}\frac{4}{2n-1}=\frac{4}{1}-\frac{4}{3}+\frac{4}{5}-\frac{4}{7}+\cdots$$
 
-Unfortunately, while this formula is very simple and easy to remember, it converges extremely slowly. Let $$a_n=4/(2n-1)$$ and let $$\pi_N$$ be the above series truncated after $$N$$ terms. Then by the alternating series test, we have $$\left\vert\pi_N-\pi\right\vert\leq a_{N+1}\sim 2/N$$ as an upper bound for the error. This estimate for the error turns out to be of the correct order, which implies that if we want to calculate $$d$$ digits of $$\pi$$, we need to take $$N$$ to be exponential in $$d$$.
+Unfortunately, while this formula is very simple and easy to remember, it converges extremely slowly. To see this, let $$\pi_N$$ be the above series truncated after $$N$$ terms and let $$a_n=4/(2n-1)$$. Then by the [alternating series test][4], we have $$\left\vert\pi_N-\pi\right\vert\leq a_{N+1}\approx 2/N$$ as an upper bound for the error in the approximation. This estimate for the error turns out to be of the correct order, which implies that if we want to calculate $$d$$ digits of $$\pi$$, we need to take $$N$$ to be exponential in $$d$$.
 
 Let's make a table of $$\pi_{10^k}$$ for various values of $$k$$, so we can see just how slowly the sum converges.
 
@@ -336,6 +336,9 @@ $$\begin{aligned}
 
 as expected.
 
+---
+
 [1]: https://en.wikipedia.org/wiki/Chudnovsky_algorithm
 [2]: https://www.youtube.com/watch?v=fw1kRz83Fj0
 [3]: https://en.wikipedia.org/wiki/Euler%E2%80%93Maclaurin_formula
+[4]: https://en.wikipedia.org/wiki/Alternating_series_test
