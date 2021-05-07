@@ -145,7 +145,7 @@ H_n &= \color{green}{1+\frac{1}{2}+\cdots+\frac{1}{n}} \\
 
 The green terms are all of the original terms that are not cancelled out by any term in the sum. The two red terms are the first pair of terms to cancel, and the two blue terms are the second pair to cancel. The $$-1/(2n)$$ term will be cancelled later when the term $$1/(2n)-1/(3n)$$ is added, and so on.
 
-In fact, that is all we need to do to generalise $$H_n$$. We can now define the *generalised harmonic number*
+In fact, that is all we need to do to generalise $$H_n$$. We can now define the *generalised harmonic number*[^1]
 
 $$H(x)=\sum_{k=1}^{\infty}\left(\frac{1}{k}-\frac{1}{k+x}\right)$$
 
@@ -240,7 +240,7 @@ Taking $$N\to\infty$$ eliminates all of the terms in red, simplifying the formul
 
 $$H(x)=\log(x)+\frac{1}{2}+\frac{1}{2x}+\sum_{n=2}^{m}\frac{B_n}{n}\left(1-\frac{1}{x^n}\right)+C_{m,x}$$
 
-To obtain the final asymptotic formula for $$H(x)$$, subtract $$\log(x)$$ and consider what happens as $$x\to\infty$$. The $$1/x^n$$ term inside the sum will go to zero. It turns out that $$H(x)-\log(x)$$ converges to a constant, denoted by $$\gamma$$, and that $$C_{m,x}$$ also converges to a constant $$C_m$$ depending on $$m$$. So we have
+To obtain the final asymptotic formula for $$H(x)$$, subtract $$\log(x)$$ and consider what happens as $$x\to\infty$$. The $$1/x^n$$ term inside the sum will go to zero. It turns out that $$H(x)-\log(x)$$ converges to a constant called [Euler's constant][7], denoted by $$\gamma$$, and that $$C_{m,x}$$ also converges to a constant $$C_m$$ depending on $$m$$. So we have
 
 $$\lim_{x\to\infty}H(x)-\log(x)=\gamma=\frac{1}{2}+\sum_{n=2}^{m}\frac{B_n}{n}+C_m$$
 
@@ -338,8 +338,12 @@ as expected.
 
 ---
 
+[^1]: In the mathematical literature, it is more common to encounter the [digamma function][6] $$\psi$$ than our function $$H$$. They are related by the equation $$H(x)=\psi(x+1)+\gamma$$, where $$\gamma$$ is [Euler's constant][7].
+
 [1]: https://en.wikipedia.org/wiki/Chudnovsky_algorithm
 [2]: https://www.youtube.com/watch?v=fw1kRz83Fj0
 [3]: https://en.wikipedia.org/wiki/Euler%E2%80%93Maclaurin_formula
 [4]: https://en.wikipedia.org/wiki/Alternating_series_test
 [5]: https://en.wikipedia.org/wiki/Asymptotic_expansion
+[6]: https://en.wikipedia.org/wiki/Digamma_function
+[7]: https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant
