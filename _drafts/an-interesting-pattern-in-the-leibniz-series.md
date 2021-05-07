@@ -61,7 +61,7 @@ The pattern of correct and incorrect digits in $$\pi_{10^k}$$ really stands out 
 - the fourth block of incorrect digits appears after roughly $$7k$$ digits, and is always $$953125=5^6\cdot 61$$ too high
 - ...
 
-This suggests the existence of an asymptotic error formula (an infinite sequence of "correction" terms) that can be added to $$\pi_N$$ to yield approximations with a much smaller error. Moreover, with a bit of experimentation, the patterns we noticed above seem to suggest that this asymptotic series begins
+This suggests the existence of an [asymptotic error formula][5] (an infinite sequence of "correction" terms) that can be added to $$\pi_N$$ to yield approximations with a much smaller error. Moreover, with a bit of experimentation, the patterns we noticed above seem to suggest that this asymptotic series begins
 
 $$\pi\stackrel{?}{=}\pi_N+\frac{1}{N}-\frac{1}{4N^3}+\frac{5}{16N^5}-\frac{61}{64N^7}+\cdots$$
 
@@ -342,3 +342,4 @@ as expected.
 [2]: https://www.youtube.com/watch?v=fw1kRz83Fj0
 [3]: https://en.wikipedia.org/wiki/Euler%E2%80%93Maclaurin_formula
 [4]: https://en.wikipedia.org/wiki/Alternating_series_test
+[5]: https://en.wikipedia.org/wiki/Asymptotic_expansion
