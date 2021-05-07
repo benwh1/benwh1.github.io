@@ -204,7 +204,7 @@ and in general, they can be defined recursively by
 
 $$B_0=1;\,\, B_n=-\sum_{k=0}^{n-1}\binom{n}{k}\frac{B_k}{n-k+1}$$
 
-This is the [Euler Maclaurin formula][3]. Although we are currently interpreting it as a general formula for numerical integration, its main use actually comes when we use the formula *in reverse*, to approximate sums by integrals. This is how the formula is usually presented, as the Euler Maclaurin *summation* formula.
+This is the [Euler-Maclaurin formula][3]. Although we are currently interpreting it as a general formula for numerical integration, its main use actually comes when we use the formula *in reverse*, to approximate sums by integrals. This is how the formula is usually presented, as the Euler-Maclaurin *summation* formula.
 
 $$\sum_{n=a}^{b}f(n)=\int_a^b f(x)dx+\frac{f(a)+f(b)}{2}+\sum_{n=2}^{m}\frac{B_n}{n!}\left(f^{(n-1)}(b)-f^{(n-1)}(a)\right)+R_{m}$$
 
@@ -212,7 +212,7 @@ One way to derive this formula is to split up the integral into a sum of integra
 
 ## **Asymptotic expansion of the Harmonic Numbers**
 
-We will first derive the asymptotic expansion of $$H(x)$$ by using the Euler Maclaurin formula, and then derive the asymptotic expansion of $$H(x-c)$$ from the result, where $$c$$ is an arbitrary constant. By replacing $$x$$ with $$\alpha x$$ and $$c$$ with $$-\beta$$, this is enough to asymptotically expand $$H(\alpha x+\beta)$$, which is our goal.
+We will first derive the asymptotic expansion of $$H(x)$$ by using the Euler-Maclaurin formula, and then derive the asymptotic expansion of $$H(x-c)$$ from the result, where $$c$$ is an arbitrary constant. By replacing $$x$$ with $$\alpha x$$ and $$c$$ with $$-\beta$$, this is enough to asymptotically expand $$H(\alpha x+\beta)$$, which is our goal.
 
 Let $$x$$ be a real number and $$m$$ be a fixed positive integer denoting the order of our approximation. The natural choice for $$f$$ is to take $$f(t)=1/t-1/(t+x)$$ since that is the function that $$H(x)$$ is defined to be the sum of, but it turns out that this will give us an asymptotic series in powers of $$x+1$$, rather than in powers of $$x$$ (why?). Instead, we define $$f(t)=1/t-1/(t+x-1)$$, so that $$\sum_{n=1}^{\infty}f(n)=H(x-1)$$. We can then use the fact that $$H(x-1)+1/x=H(x)$$ and add back the $$1/x$$ term later.
 
@@ -220,7 +220,7 @@ Using the fact that the derivatives of $$f$$ are given by
 
 $$f^{(r)}(t)=(-1)^{r}r!\left(\frac{1}{t^{r+1}}-\frac{1}{(t+x-1)^{r+1}}\right)$$
 
-the Euler Maclaurin formula now says that
+the Euler-Maclaurin formula now says that
 
 $$\begin{aligned}
 \sum_{n=1}^{N}\frac{1}{n}-\frac{1}{n+x-1}
@@ -249,7 +249,7 @@ H(x)&\sim\log(x)+\gamma+\frac{1}{2x}-\sum_{n=2}^{\infty}\frac{B_n}{nx^n} \\
 &=\log(x)+\gamma-\sum_{n=1}^{\infty}\frac{B_n}{nx^n}
 \end{aligned}$$
 
-which is surprisingly short, compared to the long Euler Maclaurin formula that we started with.
+which is surprisingly short, compared to the long Euler-Maclaurin formula that we started with.
 
 It is very important to emphasize that this is only an *asymptotic series*, which we denote with the symbol $$\sim$$. The infinite sum above does *not* converge for even a single value of $$x$$! To be clear, what we mean by the formula is this: suppose we truncate the sum after $$m$$ terms. If we fix $$m$$ and take $$x$$ to be larger and larger, then the sum will get closer and closer to the true value of $$H(x)$$. However, if we fix $$x$$ and take $$m$$ larger and larger, the sum will diverge.
 
