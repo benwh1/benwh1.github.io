@@ -214,11 +214,9 @@ One way to derive this formula is to split up the integral into a sum of integra
 
 We will first derive the asymptotic expansion of $$H(x)$$ by using the Euler Maclaurin formula, and then derive the asymptotic expansion of $$H(x-c)$$ from the result, where $$c$$ is an arbitrary constant. By replacing $$x$$ with $$\alpha x$$ and $$c$$ with $$-\beta$$, this is enough to asymptotically expand $$H(\alpha x+\beta)$$, which is our goal.
 
-Before we apply the Euler Maclaurin formula to the generalised harmonic series, there are a few things we can do to clean it up a bit. We're interested in a sum from $$n=1$$ up to $$N$$, so let's fix $$a=1$$ and $$b=N$$. For each fixed $$m$$, the error term $$R_m$$ converges to a constant depending on $$m$$ as we take $$N$$ to infinity, as long as $$f^{(m)}$$ is "well-behaved". Let's rewrite the error term $$R_m$$ as $$C_m+R'_m$$ where $$C_m$$ is the limiting constant and $$R'_m\to 0$$ as $$N\to\infty$$.
+Let $$x$$ be a real number and $$m$$ be a fixed positive integer denoting the order of our approximation. The natural choice for $$f$$ is to take $$f(t)=1/t-1/(t+x)$$ since that is the function that $$H(x)$$ is defined to be the sum of, but it turns out that this will give us an asymptotic series in powers of $$x+1$$, rather than in powers of $$x$$ (why?). Instead, we define $$f(t)=1/t-1/(t+x-1)$$, so that $$\sum_{n=1}^{\infty}f(n)=H(x-1)$$. We can then use the fact that $$H(x-1)+1/x=H(x)$$ and add back the $$1/x$$ term later.
 
-Now let's use the formula. Let $$x$$ be a real number and $$m$$ be a fixed positive integer. The obvious choice for $$f$$ is to take $$f(t)=1/t-1/(t+x)$$, but it turns out that this will give us an asymptotic series in terms of powers of $$x+1$$, rather than in powers of $$x$$ (why?). Instead, we define $$f(t)=1/t-1/(t+x-1)$$, so that $$\sum_{n=1}^{\infty}f(n)=H(x-1)$$. We can use the fact that $$H(x-1)+1/x=H(x)$$ and add back the extra $$1/x$$ term later. For clarity, denote the error terms by $$C_{m,x}$$ and $$R'_{m,x}$$ to emphasise the fact that they depend on the constant $$x$$.
-
-Using the fact that
+Using the fact that the derivatives of $$f$$ are given by
 
 $$f^{(r)}(t)=(-1)^{r}r!\left(\frac{1}{t^{r+1}}-\frac{1}{(t+x-1)^{r+1}}\right)$$
 
@@ -228,19 +226,17 @@ $$\begin{aligned}
 \sum_{n=1}^{N}\frac{1}{n}-\frac{1}{n+x-1}
 &=\int_{1}^{N}\frac{1}{t}-\frac{1}{t+x-1}dt
 +\frac{1-\frac{1}{x}+\frac{1}{N}-\frac{1}{N+x-1}}{2} \\
-&+\sum_{n=2}^{m}\frac{B_n}{n!}(-1)^{n-1}(n-1)!\left(\frac{1}{N^n}-\frac{1}{(N+x-1)^n}-1+\frac{1}{x^n}\right) \\
-&+C_{m,x}+R'_{m,x} \\
+&+\sum_{n=2}^{m}\frac{B_n}{n!}(-1)^{n-1}(n-1)!\left(\frac{1}{N^n}-\frac{1}{(N+x-1)^n}-1+\frac{1}{x^n}\right)+R_{m,N,x} \\
 &=\color{red}{\log\left(\frac{N}{N+x-1}\right)}+\log(x)
 +\frac{1-\frac{1}{x}+\color{red}{\frac{1}{N}-\frac{1}{N+x-1}}}{2} \\
-&-\sum_{n=2}^{m}\frac{B_n}{n}(-1)^n\left(\color{red}{\frac{1}{N^n}-\frac{1}{(N+x-1)^n}}-1+\frac{1}{x^n}\right) \\
-&+C_{m,x}+\color{red}{R'_{m,x}} \\
+&-\sum_{n=2}^{m}\frac{B_n}{n}(-1)^n\left(\color{red}{\frac{1}{N^n}-\frac{1}{(N+x-1)^n}}-1+\frac{1}{x^n}\right)+R_{m,N,x} \\
 \end{aligned}$$
 
-Taking $$N\to\infty$$ eliminates all of the terms in red, simplifying the formula significantly. Also, it turns out that the *odd* Bernoulli numbers $$B_3, B_5, \dots$$ are all zero, so the $$(-1)^n$$ term inside the sum has no effect and can be removed. Let's also add back the $$1/x$$ term from earlier. The resulting formula looks like this:
+Taking $$N\to\infty$$ eliminates all of the terms in red, simplifying the formula significantly. Also, it turns out that the *odd* Bernoulli numbers $$B_3, B_5, \dots$$ are all zero, so the $$(-1)^n$$ term inside the sum has no effect and can be removed. Next, the error term $$R_{m,N,x}$$ turns out to converge to a constant depending on $$m$$ and $$x$$ as $$N\to\infty$$, which we will call $$C_{m,x}$$. Finally, let's also add back the $$1/x$$ term from earlier. The result of these simplifications is the formula
 
 $$H(x)=\log(x)+\frac{1}{2}+\frac{1}{2x}+\sum_{n=2}^{m}\frac{B_n}{n}\left(1-\frac{1}{x^n}\right)+C_{m,x}$$
 
-To obtain the final asymptotic formula for $$H(x)$$, subtract $$\log(x)$$ and consider what happens as $$x\to\infty$$. The $$1/x^n$$ term inside the sum will go to zero. It turns out that $$H(x)-\log(x)$$ converges to a constant called [Euler's constant][7], denoted by $$\gamma$$, and that $$C_{m,x}$$ also converges to a constant $$C_m$$ depending on $$m$$. So we have
+To obtain the final asymptotic formula for $$H(x)$$, subtract $$\log(x)$$ and consider what happens as we now take $$x\to\infty$$. The left hand side $$H(x)-\log(x)$$ converges to a constant $$\gamma$$, called [Euler's constant][7]. On the right hand side, the $$1/(2x)$$ term and the $$1/x^n$$ term inside the sum will go to zero. Also, $$C_{m,x}$$ converges to a constant $$C_m$$, depending on $$m$$. So we have
 
 $$\lim_{x\to\infty}H(x)-\log(x)=\gamma=\frac{1}{2}+\sum_{n=2}^{m}\frac{B_n}{n}+C_m$$
 
