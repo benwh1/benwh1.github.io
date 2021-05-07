@@ -107,13 +107,13 @@ to being roughly
 
 $$\left|\pi-\left(\pi_N+\frac{1}{N}\right)\right|\approx\frac{1}{N^3}$$
 
-The question, then, is what *is* the error series? What are the numbers $$1, 1, 5, 61, \dots$$ that we see appearing in the numerators? How can we calculate them?
+The question, then, is what *is* the error series? How does the sequence of coefficients, $$1, 1, 5, 61, \dots$$, continue?
 
 Exercise for the reader: use the table above to predict the next two terms of the error series, and hence the next two terms of the sequence $$1, 1, 5, 61, \dots$$. Calculate $$\pi_8$$ and add on the first 6 correction terms of the asymptotic series. How close is the result to $$\pi$$? Approximately how many terms would you have needed to achieve the same accuracy *without* the asymptotic series?
 
 ## **Generalised Harmonic Numbers**
 
-In calculus, we often study the Taylor/power series expansion of a function $$f$$ at a point $$c$$,
+In calculus and analysis, we often study the Taylor/power series expansion of a function $$f$$ at a point $$c$$,
 
 $$f(x)=f(c)+f'(c)(x-c)+f''(c)\frac{(x-c)^2}{2!}+f^{(3)}(x-c)\frac{(x-c)^3}{3!}+\cdots$$
 
