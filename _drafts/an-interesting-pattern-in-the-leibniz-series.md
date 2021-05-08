@@ -214,7 +214,9 @@ One way to derive this formula is to split up the integral into a sum of integra
 
 We will first derive the asymptotic expansion of $$H(x)$$ by using the Euler-Maclaurin formula, and then derive the asymptotic expansion of $$H(x-c)$$ from the result, where $$c$$ is an arbitrary constant. By replacing $$x$$ with $$\alpha x$$ and $$c$$ with $$-\beta$$, this is enough to asymptotically expand $$H(\alpha x+\beta)$$, which is our goal.
 
-Let $$x$$ be a real number and $$m$$ be a fixed positive integer denoting the order of our approximation. The natural choice for $$f$$ is to take $$f(t)=1/t-1/(t+x)$$ since that is the function that $$H(x)$$ is defined to be the sum of, but it turns out that this will give us an asymptotic series in powers of $$x+1$$, rather than in powers of $$x$$ (why?). Instead, we define $$f(t)=1/t-1/(t+x-1)$$, so that $$\sum_{n=1}^{\infty}f(n)=H(x-1)$$. We can then use the fact that $$H(x-1)+1/x=H(x)$$ and add back the $$1/x$$ term later.
+Let $$x$$ be a real number and $$m$$ be a fixed positive integer denoting the order of our approximation. The obvious choice for $$f$$ is to let $$f(t)=1/t-1/(t+x)$$, since that is the function that $$H(x)$$ is defined to be the sum of. However, this will give us an asymptotic series in powers of $$x+1$$, rather than in powers of $$x$$ (why?). Instead, we will define $$f(t)=1/t-1/(t+x-1)$$, so that $$\sum_{n=1}^{\infty}f(n)=H(x-1)$$. We can then use the fact that $$H(x-1)+1/x=H(x)$$ and add back the $$1/x$$ term later.
+
+We want to sum our function $$f$$ from $$n=1$$ to $$N$$ and then take $$N\to\infty$$, so we set $$a=1$$ and $$b=N$$ in the Euler-Maclaurin formula. Also, we will denote the error term by $$R_{m,N,x}$$ to emphasize the fact that it depends not only on the order of approximation $$m$$, but also on $$N$$ and $$x$$.
 
 Using the fact that the derivatives of $$f$$ are given by
 
