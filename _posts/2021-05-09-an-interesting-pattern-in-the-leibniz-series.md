@@ -1,6 +1,7 @@
 ---
 layout: post
 title: An interesting pattern in the Leibniz series
+date: 2021-05-09 20:06 +0100
 ---
 {% include mathjax.html %}
 
