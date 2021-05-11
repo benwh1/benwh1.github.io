@@ -70,7 +70,7 @@ so we expect some sort of alternating series in odd powers of $$1/N$$.
 
 (Note: this relies on the number of terms $$N$$ being even, so that we sum an equal number of positive and negative terms. We will assume $$N$$ to be even throughout the rest of this post.)
 
-All of the powers of 2 in the denominators seem to suggest that maybe we should replace $$N$$ by $$N/2$$ to eliminate them, i.e. that we should *halve* the number of terms we are summing. This isn't necessary to do of course, it just makes the formula look a bit simpler. This gives us the asymptotic formula
+All of the powers of 2 in the denominators seem to suggest that maybe we should replace $$N$$ by $$N/2$$ to eliminate them, i.e. that we should *halve* the number of terms we are summing. This isn't necessary to do of course, it just makes the formula look a bit simpler. This gives us the conjectured asymptotic formula
 
 $$\pi\stackrel{?}{=}\pi_{N/2}+2\left(\frac{1}{N}-\frac{1}{N^3}+\frac{5}{N^5}-\frac{61}{N^7}+\cdots\right)$$
 
@@ -80,7 +80,7 @@ Or, taking $$N=10^k$$ as before,
 
 $$\pi\stackrel{?}{=}\pi_{10^k/2}+2\left(\frac{1}{10^k}-\frac{1}{10^{3k}}+\frac{5}{10^{5k}}-\frac{61}{10^{7k}}+\cdots\right)$$
 
-This results in approximations of $$\pi$$ that have smaller blocks of incorrect digits:
+So summing $$10^k/2$$ terms rather than $$10^k$$ terms results in approximations of $$\pi$$ that have smaller blocks of incorrect digits:
 
 $$\begin{array}{c|c}
  k & \pi_{10^{k}/2} \\
@@ -108,7 +108,7 @@ to being roughly
 
 $$\left|\pi-\left(\pi_N+\frac{1}{N}\right)\right|\approx\frac{1}{N^3}$$
 
-The question, then, is what *is* the error series? How does the sequence of coefficients, $$1, 1, 5, 61, \dots$$, continue?
+The question, then, is what *is* the error series? How does the sequence of coefficients, $$1, 1, 5, 61, \dots$$, continue? This is what we will try to explain in the rest of this post.
 
 Exercise for the reader: use the table above to predict the next two terms of the error series, and hence the next two terms of the sequence $$1, 1, 5, 61, \dots$$. Calculate $$\pi_8$$ and add on the first 6 correction terms of the asymptotic series. How close is the result to $$\pi$$? Approximately how many terms would you have needed to achieve the same accuracy *without* the asymptotic series?
 
